@@ -30,25 +30,27 @@ namespace TimeScheduler
             InitializeComponent();
 
             cWorker.WorkerSupportsCancellation = true;
-            cWorker.DoWork += cWorker_DoWork;
-            cWorker.ProgressChanged += cWorker_ProgressChanged;
-            cWorker.RunWorkerCompleted += cWorker_RunWorkerCompleted;
-
         }
 
         private void cWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+            cReset.WaitOne(cWaitTime);
+            cReset.Reset();
 
+            List<eSchedule> schedules = new List<eSchedule>();
+
+            lblWorkDate.BeginInvoke(new MethodInvoker(delegate { lblWorkDate.Text = DateTime.Now.ToString(); }));
+            lblRecogCnt.BeginInvoke(new MethodInvoker(delegate { lblRecogCnt.Text = schedules.Count.ToString(); }));
         }
 
         private void cWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-
+            
         }
 
         private void cWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
+                cWorker.RunWorkerAsync();
         }
 
         public void SendValue(bool pHoursFlag, string pValue)
@@ -60,6 +62,7 @@ namespace TimeScheduler
         private void frm_CM_Main_Load(object sender, EventArgs e)
         {
             cCommon.LoadData(dgvList);
+            tbWaitLatency.Text = cWaitTime.ToString();
 
             // Inform
             cInformControls.Add(tbScheduleName);
@@ -76,6 +79,13 @@ namespace TimeScheduler
             cInformControls.Add(lblSchedule_Time);
             cInformControls.Add(lblSchedule_Minute);
             cInformControls.Add(cbSchedule_Completed);
+            //
+
+            // Run Config
+            cRunConfigControls.Add(tbWaitLatency);
+            cRunConfigControls.Add(lblRecogCnt);
+            cRunConfigControls.Add(lblWorkDate);
+            cRunConfigControls.Add(lblStatus);
             //
         }
 
@@ -177,6 +187,28 @@ namespace TimeScheduler
             }
         }
 
+        private void ClearRunConfigControls()
+        {
+            foreach (Control ctrl in cRunConfigControls)
+            {
+                switch (ctrl.GetType().ToString().ToUpper())
+                {
+                    case "SYSTEM.WINDOWS.FORMS.TEXTBOX":
+                        TextBox tb = (TextBox)ctrl;
+                        tb.Text = string.Empty;
+                        break;
+
+                    case "SYSTEM.WINDOWS.FORMS.LABEL":
+                        Label lbl = (Label)ctrl;
+                        lbl.Text = string.Empty;
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
+
         private void btnReset_Click(object sender, EventArgs e)
         {
             gbInform.Text = "정보";
@@ -222,7 +254,47 @@ namespace TimeScheduler
 
         private void btnToggleDaemon_Click(object sender, EventArgs e)
         {
+            if (btnToggleDaemon.Text.Equals("실행"))
+            {
+                tbWaitLatency.ReadOnly = true;
 
+                btnToggleDaemon.Text = "중지";
+                lblStatus.Text = "실행 중";
+
+                cWorker.DoWork += cWorker_DoWork;
+                cWorker.ProgressChanged += cWorker_ProgressChanged;
+                cWorker.RunWorkerCompleted += cWorker_RunWorkerCompleted;
+
+                cWorker.RunWorkerAsync();
+
+                cWaitTime = Int32.Parse(tbWaitLatency.Text);
+            }
+            else
+            {
+                if (cWorker.IsBusy)
+                {
+                    cWorker.CancelAsync();
+                    lblStatus.Text = "중지 중";
+                    btnToggleDaemon.Enabled = false;
+                }
+
+                cWorker.DoWork -= cWorker_DoWork;
+                cWorker.ProgressChanged -= cWorker_ProgressChanged;
+                cWorker.RunWorkerCompleted -= cWorker_RunWorkerCompleted;
+
+                while (cWorker.IsBusy)
+                    Application.DoEvents();
+
+                btnToggleDaemon.Enabled = true;
+                tbWaitLatency.ReadOnly = false;
+
+                ClearRunConfigControls();
+
+                tbWaitLatency.Text = cWaitTime.ToString();
+
+                lblStatus.Text = "중지";
+                btnToggleDaemon.Text = "실행";
+            }
         }
     }
 }
