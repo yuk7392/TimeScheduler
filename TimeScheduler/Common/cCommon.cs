@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
 using System.IO;
 using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TimeScheduler
 {
@@ -20,7 +18,7 @@ namespace TimeScheduler
             DateTime dateTime = DateTime.Today;
             bool loop = true;
 
-            while(loop)
+            while (loop)
             {
                 if (dateTime.DayOfWeek == pDayOfWeek)
                     loop = false;
@@ -71,7 +69,7 @@ namespace TimeScheduler
 
 
             StringBuilder sb = new StringBuilder();
-            
+
             foreach (DataGridViewRow row in pDataGridView.Rows)
             {
                 sb.Append(row.Cells["ScheduleName"].Value.ToString().NtoE() + ",");
@@ -84,7 +82,7 @@ namespace TimeScheduler
 
             }
 
-            File.WriteAllText(cConstraint.CSV_ABSOLUTE_LOCATION, sb.ToString());    
+            File.WriteAllText(cConstraint.CSV_ABSOLUTE_LOCATION, sb.ToString());
         }
 
         public static void LoadData(DataGridView pDataGridView)
@@ -149,7 +147,7 @@ namespace TimeScheduler
 
         public static void SetDayOfWeekCheckBox(List<DayOfWeek> pList, CheckBox pCb1, CheckBox pCb2, CheckBox pCb3, CheckBox pCb4, CheckBox pCb5, CheckBox pCb6, CheckBox pCb7)
         {
-           foreach (DayOfWeek day in pList)
+            foreach (DayOfWeek day in pList)
             {
                 switch (day)
                 {

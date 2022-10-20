@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TimeScheduler
@@ -63,7 +56,7 @@ namespace TimeScheduler
             if (!cHoursFlag)
                 lblValue.Text = nextVal.ToString().PadLeft(2, '0');
             else
-                lblValue.Text = nextVal.ToString();                
+                lblValue.Text = nextVal.ToString();
         }
 
         private void btnDown_Click(object sender, EventArgs e)

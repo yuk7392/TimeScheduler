@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -59,12 +54,12 @@ namespace TimeScheduler
 
         private void cWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            
+
         }
 
         private void cWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-                cWorker.RunWorkerAsync();
+            cWorker.RunWorkerAsync();
         }
 
         public void SendValue(bool pHoursFlag, string pValue)
@@ -111,7 +106,7 @@ namespace TimeScheduler
                 return;
             }
 
-            gbInform.Text = "정보("+(e.RowIndex + 1)+"번)";
+            gbInform.Text = "정보(" + (e.RowIndex + 1) + "번)";
 
             SetInfo(dgvList.Rows[e.RowIndex]);
         }
@@ -249,7 +244,7 @@ namespace TimeScheduler
                 dgvList.Rows.Add(tbScheduleName.Text, tbScheduleDate.Text, rbSchedule_Once.Checked ? "Once" : "Every", cCommon.CheckBoxToDayOfWeek(cbSchedule_Sun, cbSchedule_Mon, cbSchedule_Tue, cbSchedule_Wed, cbSchedule_Thu, cbSchedule_Fri, cbSchedule_Sat),
                                  lblSchedule_Time.Text, lblSchedule_Minute.Text, cbSchedule_Completed.Checked);
             else
-                MessageBox.Show("중복된 이름이 존재합니다 : "+tbScheduleName.Text);
+                MessageBox.Show("중복된 이름이 존재합니다 : " + tbScheduleName.Text);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -289,7 +284,7 @@ namespace TimeScheduler
                     cWaitTime = 5000;
 
                 tbWaitLatency.Text = cWaitTime.ToString();
-                
+
             }
             else
             {
