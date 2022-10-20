@@ -45,10 +45,20 @@ namespace TimeScheduler
             // Start Here
             foreach (eSchedule s in schedules)
             {
-                if (s.CYCLE.Equals(ScheduleCycleType.Once))
+                string date = DateTime.Now.ToString("yyyyMMDD");
+                string time = DateTime.Now.ToString("HH");
+                string min = DateTime.Now.ToString("mm");
+                DayOfWeek dayOfWeek = cCommon.GetDayOfWeekOfDate(date);
+
+                if (s.CYCLE.Equals(ScheduleCycleType.Every))
                 {
-                    s.COMPLETED = true;
+                    // time == null or min == null possibility
                 }
+                else
+                {
+
+                }
+
             }
         }
 
@@ -139,6 +149,10 @@ namespace TimeScheduler
             pRow.Cells["ScheduleTime"].Value = lblSchedule_Time.Text;
             pRow.Cells["ScheduleMinute"].Value = lblSchedule_Minute.Text;
             pRow.Cells["ScheduleCompleted"].Value = cbSchedule_Completed.Checked;
+        }
+
+        private void UpdateRowInfo()
+        {
         }
 
 

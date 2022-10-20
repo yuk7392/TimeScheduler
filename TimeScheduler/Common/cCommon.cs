@@ -33,7 +33,7 @@ namespace TimeScheduler
         /// 입력받은 날짜(yyyyMMDD)의 요일을 반환한다.
         /// </summary>
         /// <returns></returns>
-        public static DayOfWeek GetDateOfDayOfWeek(string pDate)
+        public static DayOfWeek GetDayOfWeekOfDate(string pDate)
         {
             int year = Int32.Parse(pDate.Substring(0, 4));
             int month = Int32.Parse(pDate.Substring(4, 2));
