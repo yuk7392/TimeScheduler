@@ -21,7 +21,7 @@ namespace TimeScheduler
         List<Control> cRunConfigControls = new List<Control>();
         BackgroundWorker cWorker = new BackgroundWorker();
         ManualResetEvent cReset = new ManualResetEvent(true);
-        public int cWaitTime = 10000;
+        public int cWaitTime = 5000;
 
         public event ValueTransfer cValueTransfer;
 
@@ -267,7 +267,15 @@ namespace TimeScheduler
 
                 cWorker.RunWorkerAsync();
 
-                cWaitTime = Int32.Parse(tbWaitLatency.Text);
+                int latency = 0;
+
+                if (Int32.TryParse(tbWaitLatency.Text, out latency))
+                    cWaitTime = latency;
+                else
+                    cWaitTime = 5000;
+
+                tbWaitLatency.Text = cWaitTime.ToString();
+                
             }
             else
             {
