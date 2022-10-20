@@ -41,6 +41,20 @@ namespace TimeScheduler
 
             lblWorkDate.BeginInvoke(new MethodInvoker(delegate { lblWorkDate.Text = DateTime.Now.ToString(); }));
             lblRecogCnt.BeginInvoke(new MethodInvoker(delegate { lblRecogCnt.Text = schedules.Count.ToString(); }));
+
+            foreach (DataGridViewRow row in dgvList.Rows)
+            {
+                schedules.Add(cCommon.ConvertToEntity(row));
+            }
+
+            // Start Here
+            foreach (eSchedule s in schedules)
+            {
+                if (s.CYCLE.Equals(ScheduleCycleType.Once))
+                {
+                    s.COMPLETED = true;
+                }
+            }
         }
 
         private void cWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
