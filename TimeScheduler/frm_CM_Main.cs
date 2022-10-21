@@ -393,6 +393,8 @@ namespace TimeScheduler
         {
             if (btnToggleDaemon.Text.Equals("실행"))
             {
+                this.WindowState = FormWindowState.Minimized;
+
                 tbWaitLatency.ReadOnly = true;
 
                 btnToggleDaemon.Text = "중지";

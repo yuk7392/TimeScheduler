@@ -83,5 +83,50 @@ namespace TimeScheduler
         {
             return Int32.Parse(lblValue.Text);
         }
+
+        private void lblApply_Click(object sender, EventArgs e)
+        {
+            int newVal;
+
+            if (Int32.TryParse(tbValue.Text, out newVal))
+            {
+                if (newVal < 0)
+                {
+                    MessageBox.Show("0보다 작을 수 없습니다.");
+                    return;
+                }
+
+                if (cHoursFlag)
+                {
+                    if (newVal > 23)
+                    {
+                        MessageBox.Show("23시보다 클 수 없습니다.");
+                        return;
+                    }
+
+                    if (newVal > 12)
+                        btnClose.Text = "적용" + Environment.NewLine + "(" + (+newVal - 12) + "시)";
+                    else
+                        btnClose.Text = "적용";
+
+                }
+               else
+                {
+                    if (newVal > 59)
+                    {
+                        MessageBox.Show("59분보다 클 수 없습니다.");
+                        return;
+                    }
+                }
+
+                lblValue.Text = newVal.ToString().PadLeft(2, '0');
+                tbValue.Text = String.Empty;
+            }
+            else
+            {
+                MessageBox.Show("올바르지 않은 입력입니다.");
+                return;
+            }
+        }
     }
 }
