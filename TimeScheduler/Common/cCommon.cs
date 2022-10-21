@@ -107,6 +107,17 @@ namespace TimeScheduler
             }
         }
 
+        public static void ResetCsv()
+        {
+            if (File.Exists(cConstraint.CSV_ABSOLUTE_LOCATION))
+                File.Delete(cConstraint.CSV_ABSOLUTE_LOCATION);
+
+            using (File.Create(cConstraint.CSV_ABSOLUTE_LOCATION))
+            {
+
+            }
+        }
+
         public static eSchedule ConvertToEntity(DataGridViewRow pRow)
         {
             eSchedule eSchedule = new eSchedule();
@@ -312,6 +323,25 @@ namespace TimeScheduler
             }
 
             return sb.ToString();
+        }
+
+        public static int RemoveCompletedRow(DataGridView pDataGridView)
+        {
+            int cnt = 0;
+
+            foreach (DataGridViewRow row in pDataGridView.Rows)
+            {
+                if (row.Cells["ScheduleCompleted"].Value.Equals(true))
+                {
+                    if (row.Cells["ScheduleCycle"].Value.ToString().ToUpper().NtoE().Equals("EVERY"))
+                        continue;
+
+                    pDataGridView.Rows.Remove(row);
+                    cnt++;
+                }
+            }
+
+            return cnt;
         }
 
     }

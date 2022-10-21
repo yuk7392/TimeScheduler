@@ -490,5 +490,72 @@ namespace TimeScheduler
 
             MessageBox.Show(pContext, "알림");
         }
+
+        private void btnDeleteCompleted_Click(object sender, EventArgs e)
+        {
+            if (cWorker.IsBusy)
+            {
+                MessageBox.Show("실행중에는 해당기능을 사용하실 수 없습니다.");
+                return;
+            }
+
+            if (MessageBox.Show("정말로 완료항목들을 삭제하시겠습니까?" + Environment.NewLine + "(주기가 Every인 항목은 삭제되지 않습니다.)", String.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
+                return;
+
+            MessageBox.Show(cCommon.RemoveCompletedRow(dgvList) + "개의 항목이 삭제되었습니다.");
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (cWorker.IsBusy)
+            {
+                MessageBox.Show("실행중에는 해당기능을 사용하실 수 없습니다.");
+                return;
+            }
+
+            if (MessageBox.Show("모든항목들을 저장하시겠습니까?", String.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
+                return;
+
+            cCommon.SaveData(dgvList);
+
+            MessageBox.Show("저장되었습니다.");
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            if (cWorker.IsBusy)
+            {
+                MessageBox.Show("실행중에는 해당기능을 사용하실 수 없습니다.");
+                return;
+            }
+
+            if (MessageBox.Show("모든항목들을 불러오시겠습니까?" + Environment.NewLine + "(저장하지 않은 항목은 모두 삭제됩니다.)", String.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
+                return;
+
+            dgvList.Rows.Clear();
+            cCommon.LoadData(dgvList);
+
+            MessageBox.Show("저장된 데이터를 불러왔습니다.");
+        }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+            if (cWorker.IsBusy)
+            {
+                MessageBox.Show("실행중에는 해당기능을 사용하실 수 없습니다.");
+                return;
+            }
+
+            if (MessageBox.Show("모든항목들을 삭제하시겠습니까?" + Environment.NewLine + "(화면에 표시된 데이터 또한 삭제됩니다.)", String.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
+                return;
+
+            cCommon.ResetCsv();
+            dgvList.Rows.Clear();
+            cCommon.LoadData(dgvList);
+            ClearInformControls();
+            ClearRunConfigControls();
+
+            MessageBox.Show("삭제되었습니다.");
+        }
     }
 }
