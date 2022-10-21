@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -26,6 +27,7 @@ namespace TimeScheduler
             InitializeComponent();
 
             cWorker.WorkerSupportsCancellation = true;
+            this.Text = "Time Scheduler (" + Assembly.GetExecutingAssembly().GetName().Version + ")";
         }
 
         private void cWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -75,18 +77,24 @@ namespace TimeScheduler
 
                         foreach (DayOfWeek dow in s.DAYOFWEEK)
                         {
-                            if (dow.Equals(dayOfWeek) && s.TIME.Equals(time) && s.MINUTE.Equals(min))
+                            if (dow.Equals(dayOfWeek))
                             {
-                                if (s.COMPLETED)
-                                    break;
+                                if (s.TIME.Equals(time) && s.MINUTE.Equals(min))
+                                {
+                                    if (s.COMPLETED)
+                                        break;
 
-                                ShowMessages(s.NAME);
-                                s.COMPLETED = true;
+                                    ShowMessages(s.NAME);
+                                    s.COMPLETED = true;
+                                }
+                                else
+                                {
+                                    s.COMPLETED = false;
+                                }
                             }
                             else
                             {
-                                s.COMPLETED = false;
-
+                                continue;
                             }
                         }
 
