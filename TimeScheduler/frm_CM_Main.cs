@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Reflection;
 using System.Threading;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace TimeScheduler
@@ -502,7 +502,7 @@ namespace TimeScheduler
                 return;
             }
 
-            if (MessageBox.Show("정말로 완료항목들을 삭제하시겠습니까?" + Environment.NewLine + "(주기가 Every인 항목은 삭제되지 않습니다.)", String.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
+            if (MessageBox.Show("완료항목들을 삭제하시겠습니까?" + Environment.NewLine + "(주기가 Every인 항목은 삭제되지 않습니다.)", String.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
                 return;
 
             MessageBox.Show(cCommon.RemoveCompletedRow(dgvList) + "개의 항목이 삭제되었습니다.");
