@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 using System.Threading;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace TimeScheduler
@@ -338,8 +339,10 @@ namespace TimeScheduler
 
         private void frm_CM_Main_FormClosed(object sender, FormClosedEventArgs e)
         {
-            cCommon.SaveData(dgvList);
+            if (MessageBox.Show("내용을 저장하시겠습니까?", String.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
+                return;
 
+            cCommon.SaveData(dgvList);
             MessageBox.Show("저장되었습니다.");
         }
 
@@ -556,6 +559,34 @@ namespace TimeScheduler
             ClearRunConfigControls();
 
             MessageBox.Show("삭제되었습니다.");
+        }
+
+        private void lblStatus_TextChanged(object sender, EventArgs e)
+        {
+            // 실행 중, 중지 중, 중지
+
+            Color color = Color.Black;
+
+            switch (lblStatus.Text)
+            {
+                case "실행 중":
+                    color = Color.Green;
+                    break;
+
+                case "중지 중":
+                    color = Color.Yellow;
+                    break;
+
+                case "중지":
+                    color = Color.Red;
+                    break;
+
+                default:
+                    color = Color.Black;
+                    break;
+            }
+
+            lblStatus.ForeColor = color;
         }
     }
 }
