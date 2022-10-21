@@ -77,6 +77,9 @@ namespace TimeScheduler
                         {
                             if (dow.Equals(dayOfWeek) && s.TIME.Equals(time) && s.MINUTE.Equals(min))
                             {
+                                if (s.COMPLETED)
+                                    break;
+
                                 ShowMessages(s.NAME);
                                 s.COMPLETED = true;
                             }
@@ -328,6 +331,8 @@ namespace TimeScheduler
         private void frm_CM_Main_FormClosed(object sender, FormClosedEventArgs e)
         {
             cCommon.SaveData(dgvList);
+
+            MessageBox.Show("저장되었습니다.");
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
