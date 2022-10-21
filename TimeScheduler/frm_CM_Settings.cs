@@ -8,5 +8,20 @@ namespace TimeScheduler
         {
             InitializeComponent();
         }
+
+        private void btnSave_Click(object sender, System.EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void btnCancel_Click(object sender, System.EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void btnClear_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

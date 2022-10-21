@@ -588,5 +588,11 @@ namespace TimeScheduler
 
             lblStatus.ForeColor = color;
         }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            frm_CM_Settings frm = new frm_CM_Settings();
+            frm.ShowDialog();
+        }
     }
 }

@@ -77,6 +77,7 @@
             // btnClose
             // 
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Location = new System.Drawing.Point(336, 4);
             this.btnClose.Name = "btnClose";
@@ -106,6 +107,7 @@
             // btnDown
             // 
             this.btnDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDown.FlatAppearance.BorderSize = 0;
             this.btnDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDown.Location = new System.Drawing.Point(4, 37);
             this.btnDown.Name = "btnDown";
@@ -118,6 +120,7 @@
             // btnUp
             // 
             this.btnUp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUp.FlatAppearance.BorderSize = 0;
             this.btnUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUp.Location = new System.Drawing.Point(4, 4);
             this.btnUp.Name = "btnUp";

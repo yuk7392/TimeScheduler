@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvList = new System.Windows.Forms.DataGridView();
             this.ScheduleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -137,14 +137,14 @@
             // 
             this.dgvList.AllowUserToAddRows = false;
             this.dgvList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("맑은 고딕", 10F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("맑은 고딕", 10F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ScheduleName,
@@ -154,14 +154,14 @@
             this.ScheduleTime,
             this.ScheduleMinute,
             this.ScheduleCompleted});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("맑은 고딕", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvList.Location = new System.Drawing.Point(66, 4);
             this.dgvList.MultiSelect = false;
@@ -744,6 +744,7 @@
             // btnAdd
             // 
             this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Location = new System.Drawing.Point(214, 4);
             this.btnAdd.Name = "btnAdd";
@@ -756,6 +757,7 @@
             // btnDelete
             // 
             this.btnDelete.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Location = new System.Drawing.Point(74, 4);
             this.btnDelete.Name = "btnDelete";
@@ -768,6 +770,7 @@
             // btnModify
             // 
             this.btnModify.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnModify.FlatAppearance.BorderSize = 0;
             this.btnModify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModify.Location = new System.Drawing.Point(144, 4);
             this.btnModify.Name = "btnModify";
@@ -780,6 +783,7 @@
             // btnReset
             // 
             this.btnReset.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnReset.FlatAppearance.BorderSize = 0;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.Location = new System.Drawing.Point(4, 4);
             this.btnReset.Name = "btnReset";
@@ -792,6 +796,7 @@
             // btnToggleDaemon
             // 
             this.btnToggleDaemon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnToggleDaemon.FlatAppearance.BorderSize = 0;
             this.btnToggleDaemon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnToggleDaemon.Location = new System.Drawing.Point(284, 4);
             this.btnToggleDaemon.Name = "btnToggleDaemon";
@@ -963,6 +968,7 @@
             // btnDeleteCompleted
             // 
             this.btnDeleteCompleted.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDeleteCompleted.FlatAppearance.BorderSize = 0;
             this.btnDeleteCompleted.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteCompleted.Location = new System.Drawing.Point(4, 4);
             this.btnDeleteCompleted.Name = "btnDeleteCompleted";
@@ -975,6 +981,7 @@
             // btnSave
             // 
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Location = new System.Drawing.Point(4, 121);
             this.btnSave.Name = "btnSave";
@@ -987,6 +994,7 @@
             // btnLoad
             // 
             this.btnLoad.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLoad.FlatAppearance.BorderSize = 0;
             this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoad.Location = new System.Drawing.Point(4, 238);
             this.btnLoad.Name = "btnLoad";
@@ -999,6 +1007,7 @@
             // btnDeleteAll
             // 
             this.btnDeleteAll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDeleteAll.FlatAppearance.BorderSize = 0;
             this.btnDeleteAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteAll.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnDeleteAll.ForeColor = System.Drawing.Color.Red;
@@ -1013,6 +1022,7 @@
             // btnSetting
             // 
             this.btnSetting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSetting.FlatAppearance.BorderSize = 0;
             this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSetting.Location = new System.Drawing.Point(4, 355);
             this.btnSetting.Name = "btnSetting";
@@ -1020,6 +1030,7 @@
             this.btnSetting.TabIndex = 10;
             this.btnSetting.Text = "설정";
             this.btnSetting.UseVisualStyleBackColor = true;
+            this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
             // 
             // frm_CM_Main
             // 
