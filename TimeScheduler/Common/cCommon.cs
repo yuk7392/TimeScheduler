@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -98,6 +99,10 @@ namespace TimeScheduler
             foreach (string s in dataLines)
             {
                 string[] rowData = s.Split(new string[] { "," }, StringSplitOptions.None);
+
+                if (rowData.Length != 7)
+                    continue;
+
                 pDataGridView.Rows.Add(rowData[0], rowData[1], rowData[2], ConvertIntToDayOfWeek(rowData[3].ToString().NtoE()), rowData[4], rowData[5], rowData[6].ToString().NtoE().ToUpper().Equals("TRUE") ? true : false);
             }
         }
@@ -269,6 +274,46 @@ namespace TimeScheduler
 
             return sb.ToString();
         }
+
+        public static bool IsDate(string pString)
+        {
+            DateTime dateTime;
+
+            return DateTime.TryParseExact(pString, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out dateTime);
+
+        }
+
+        public static string ConvertDayOfWeekEnumListToString(List<DayOfWeek> pDayOfWeekList)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (DayOfWeek d in pDayOfWeekList)
+            {
+                if (d.Equals(DayOfWeek.Sunday))
+                    sb.Append("일");
+
+                if (d.Equals(DayOfWeek.Monday))
+                    sb.Append("월");
+
+                if (d.Equals(DayOfWeek.Tuesday))
+                    sb.Append("화");
+
+                if (d.Equals(DayOfWeek.Wednesday))
+                    sb.Append("수");
+
+                if (d.Equals(DayOfWeek.Thursday))
+                    sb.Append("목");
+
+                if (d.Equals(DayOfWeek.Friday))
+                    sb.Append("금");
+
+                if (d.Equals(DayOfWeek.Saturday))
+                    sb.Append("토");
+            }
+
+            return sb.ToString();
+        }
+
     }
 
     public static class cCommonExtension

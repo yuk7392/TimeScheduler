@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvList = new System.Windows.Forms.DataGridView();
             this.ScheduleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +42,8 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.gbInform = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tbScheduleDate = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.lblSchedule_Minute = new System.Windows.Forms.Label();
             this.lblMinutes_Chng = new System.Windows.Forms.Label();
@@ -75,23 +77,21 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnModify = new System.Windows.Forms.Button();
-            this.btnReset = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tbScheduleDate = new System.Windows.Forms.TextBox();
+            this.btnModify = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             this.btnToggleDaemon = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.lblWorkDate = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tbWaitLatency = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.lblRecogCnt = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.lblWorkDate = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.lblStatus = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -126,14 +126,14 @@
             // 
             this.dgvList.AllowUserToAddRows = false;
             this.dgvList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("맑은 고딕", 10F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("맑은 고딕", 10F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ScheduleName,
@@ -143,14 +143,14 @@
             this.ScheduleTime,
             this.ScheduleMinute,
             this.ScheduleCompleted});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("맑은 고딕", 10F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("맑은 고딕", 10F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvList.Location = new System.Drawing.Point(4, 4);
             this.dgvList.MultiSelect = false;
@@ -273,6 +273,28 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(349, 336);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
+            // tbScheduleDate
+            // 
+            this.tbScheduleDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbScheduleDate.Location = new System.Drawing.Point(108, 44);
+            this.tbScheduleDate.Multiline = true;
+            this.tbScheduleDate.Name = "tbScheduleDate";
+            this.tbScheduleDate.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tbScheduleDate.Size = new System.Drawing.Size(237, 33);
+            this.tbScheduleDate.TabIndex = 2;
+            this.tbScheduleDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(4, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 39);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "날짜";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
@@ -286,7 +308,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(237, 41);
             this.tableLayoutPanel5.TabIndex = 19;
             // 
@@ -297,7 +319,7 @@
             this.lblSchedule_Minute.Location = new System.Drawing.Point(4, 1);
             this.lblSchedule_Minute.Name = "lblSchedule_Minute";
             this.lblSchedule_Minute.Size = new System.Drawing.Size(157, 39);
-            this.lblSchedule_Minute.TabIndex = 10;
+            this.lblSchedule_Minute.TabIndex = 6;
             this.lblSchedule_Minute.Text = "00";
             this.lblSchedule_Minute.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -387,7 +409,7 @@
             this.tbScheduleName.Name = "tbScheduleName";
             this.tbScheduleName.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.tbScheduleName.Size = new System.Drawing.Size(237, 33);
-            this.tbScheduleName.TabIndex = 12;
+            this.tbScheduleName.TabIndex = 1;
             this.tbScheduleName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tableLayoutPanel4
@@ -403,7 +425,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(237, 41);
             this.tableLayoutPanel4.TabIndex = 18;
             // 
@@ -426,8 +448,8 @@
             this.lblSchedule_Time.Location = new System.Drawing.Point(4, 1);
             this.lblSchedule_Time.Name = "lblSchedule_Time";
             this.lblSchedule_Time.Size = new System.Drawing.Size(157, 39);
-            this.lblSchedule_Time.TabIndex = 9;
-            this.lblSchedule_Time.Text = "0";
+            this.lblSchedule_Time.TabIndex = 5;
+            this.lblSchedule_Time.Text = "00";
             this.lblSchedule_Time.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel7
@@ -443,7 +465,7 @@
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(237, 41);
             this.tableLayoutPanel7.TabIndex = 20;
             // 
@@ -454,7 +476,7 @@
             this.rbSchedule_Every.Location = new System.Drawing.Point(122, 4);
             this.rbSchedule_Every.Name = "rbSchedule_Every";
             this.rbSchedule_Every.Size = new System.Drawing.Size(111, 33);
-            this.rbSchedule_Every.TabIndex = 1;
+            this.rbSchedule_Every.TabIndex = 4;
             this.rbSchedule_Every.TabStop = true;
             this.rbSchedule_Every.Text = "매주";
             this.rbSchedule_Every.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -464,15 +486,17 @@
             // rbSchedule_Once
             // 
             this.rbSchedule_Once.AutoSize = true;
+            this.rbSchedule_Once.Checked = true;
             this.rbSchedule_Once.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rbSchedule_Once.Location = new System.Drawing.Point(4, 4);
             this.rbSchedule_Once.Name = "rbSchedule_Once";
             this.rbSchedule_Once.Size = new System.Drawing.Size(111, 33);
-            this.rbSchedule_Once.TabIndex = 0;
+            this.rbSchedule_Once.TabIndex = 3;
             this.rbSchedule_Once.TabStop = true;
             this.rbSchedule_Once.Text = "한번만";
             this.rbSchedule_Once.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rbSchedule_Once.UseVisualStyleBackColor = true;
+            this.rbSchedule_Once.CheckedChanged += new System.EventHandler(this.rbSchedule_Once_CheckedChanged);
             // 
             // cbSchedule_Completed
             // 
@@ -707,30 +731,6 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(355, 55);
             this.tableLayoutPanel6.TabIndex = 2;
             // 
-            // btnModify
-            // 
-            this.btnModify.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnModify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModify.Location = new System.Drawing.Point(144, 4);
-            this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(63, 47);
-            this.btnModify.TabIndex = 1;
-            this.btnModify.Text = "수정";
-            this.btnModify.UseVisualStyleBackColor = true;
-            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
-            // 
-            // btnReset
-            // 
-            this.btnReset.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.Location = new System.Drawing.Point(4, 4);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(63, 47);
-            this.btnReset.TabIndex = 0;
-            this.btnReset.Text = "초기화";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
             // btnAdd
             // 
             this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -755,27 +755,29 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // label2
+            // btnModify
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(4, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 39);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "날짜";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnModify.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnModify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModify.Location = new System.Drawing.Point(144, 4);
+            this.btnModify.Name = "btnModify";
+            this.btnModify.Size = new System.Drawing.Size(63, 47);
+            this.btnModify.TabIndex = 1;
+            this.btnModify.Text = "수정";
+            this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
-            // tbScheduleDate
+            // btnReset
             // 
-            this.tbScheduleDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbScheduleDate.Location = new System.Drawing.Point(108, 44);
-            this.tbScheduleDate.Multiline = true;
-            this.tbScheduleDate.Name = "tbScheduleDate";
-            this.tbScheduleDate.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbScheduleDate.Size = new System.Drawing.Size(237, 33);
-            this.tbScheduleDate.TabIndex = 24;
-            this.tbScheduleDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnReset.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.Location = new System.Drawing.Point(4, 4);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(63, 47);
+            this.btnReset.TabIndex = 0;
+            this.btnReset.Text = "초기화";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnToggleDaemon
             // 
@@ -825,6 +827,50 @@
             this.tableLayoutPanel9.Size = new System.Drawing.Size(349, 153);
             this.tableLayoutPanel9.TabIndex = 0;
             // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblStatus.Location = new System.Drawing.Point(108, 122);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(237, 30);
+            this.lblStatus.TabIndex = 19;
+            this.lblStatus.Text = "0";
+            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label18.Location = new System.Drawing.Point(4, 122);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(97, 30);
+            this.label18.TabIndex = 18;
+            this.label18.Text = "Status";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblWorkDate
+            // 
+            this.lblWorkDate.AutoSize = true;
+            this.lblWorkDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblWorkDate.Location = new System.Drawing.Point(108, 84);
+            this.lblWorkDate.Name = "lblWorkDate";
+            this.lblWorkDate.Size = new System.Drawing.Size(237, 37);
+            this.lblWorkDate.TabIndex = 17;
+            this.lblWorkDate.Text = "0";
+            this.lblWorkDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label17.Location = new System.Drawing.Point(4, 84);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(97, 37);
+            this.label17.TabIndex = 16;
+            this.label17.Text = "최근\r\n작동시간";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -844,7 +890,7 @@
             this.tbWaitLatency.Name = "tbWaitLatency";
             this.tbWaitLatency.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.tbWaitLatency.Size = new System.Drawing.Size(237, 38);
-            this.tbWaitLatency.TabIndex = 13;
+            this.tbWaitLatency.TabIndex = 7;
             this.tbWaitLatency.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label16
@@ -868,50 +914,6 @@
             this.lblRecogCnt.TabIndex = 15;
             this.lblRecogCnt.Text = "0";
             this.lblRecogCnt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label17.Location = new System.Drawing.Point(4, 84);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(97, 37);
-            this.label17.TabIndex = 16;
-            this.label17.Text = "최근\r\n작동시간";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblWorkDate
-            // 
-            this.lblWorkDate.AutoSize = true;
-            this.lblWorkDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblWorkDate.Location = new System.Drawing.Point(108, 84);
-            this.lblWorkDate.Name = "lblWorkDate";
-            this.lblWorkDate.Size = new System.Drawing.Size(237, 37);
-            this.lblWorkDate.TabIndex = 17;
-            this.lblWorkDate.Text = "0";
-            this.lblWorkDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label18.Location = new System.Drawing.Point(4, 122);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(97, 30);
-            this.label18.TabIndex = 18;
-            this.label18.Text = "Status";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblStatus.Location = new System.Drawing.Point(108, 122);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(237, 30);
-            this.lblStatus.TabIndex = 19;
-            this.lblStatus.Text = "0";
-            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frm_CM_Main
             // 

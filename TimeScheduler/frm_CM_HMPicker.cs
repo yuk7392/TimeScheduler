@@ -53,10 +53,7 @@ namespace TimeScheduler
                     nextVal = 0;
             }
 
-            if (!cHoursFlag)
-                lblValue.Text = nextVal.ToString().PadLeft(2, '0');
-            else
-                lblValue.Text = nextVal.ToString();
+            lblValue.Text = nextVal.ToString().PadLeft(2, '0');
         }
 
         private void btnDown_Click(object sender, EventArgs e)
@@ -79,10 +76,7 @@ namespace TimeScheduler
                     nextVal = 59;
             }
 
-            if (!cHoursFlag)
-                lblValue.Text = nextVal.ToString().PadLeft(2, '0');
-            else
-                lblValue.Text = nextVal.ToString();
+            lblValue.Text = nextVal.ToString().PadLeft(2, '0');
         }
 
         private int ConvertLabelToInt()

@@ -14,6 +14,7 @@ namespace TimeScheduler
 
         List<Control> cInformControls = new List<Control>();
         List<Control> cRunConfigControls = new List<Control>();
+        List<CheckBox> cDayOfWeekCheckBoxes = new List<CheckBox>();
         BackgroundWorker cWorker = new BackgroundWorker();
         ManualResetEvent cReset = new ManualResetEvent(true);
         public int cWaitTime = 5000;
@@ -45,20 +46,53 @@ namespace TimeScheduler
             // Start Here
             foreach (eSchedule s in schedules)
             {
-                string date = DateTime.Now.ToString("yyyyMMDD");
+                string date = DateTime.Now.ToString("yyyyMMdd");
                 string time = DateTime.Now.ToString("HH");
                 string min = DateTime.Now.ToString("mm");
                 DayOfWeek dayOfWeek = cCommon.GetDayOfWeekOfDate(date);
 
-                if (s.CYCLE.Equals(ScheduleCycleType.Every))
-                {
-                    // time == null or min == null possibility
-                }
-                else
-                {
 
+                switch (s.CYCLE)
+                {
+                    case ScheduleCycleType.Once:
+
+                        if (s.DATE.Equals(date) && s.TIME.Equals(time) && s.MINUTE.Equals(min))
+                        {
+                            // Alert Here!
+
+                            if (s.COMPLETED)
+                                break;
+                            else
+                                s.COMPLETED = true;
+                        }
+
+                        break;
+
+                    case ScheduleCycleType.Every:
+
+                        foreach (DayOfWeek dow in s.DAYOFWEEK)
+                        {
+                            if (dow.Equals(dayOfWeek) && s.TIME.Equals(time) && s.MINUTE.Equals(min))
+                            {
+                                // Alert Here!
+                                s.COMPLETED = true;
+
+                            }
+                            else
+                            {
+                                s.COMPLETED = false;
+
+                            }
+                        }
+
+                        break;
+
+                    default:
+                        break;
                 }
 
+                // 변경사항 반영
+                UpdateRowInfo(s);
             }
         }
 
@@ -106,6 +140,18 @@ namespace TimeScheduler
             cRunConfigControls.Add(lblWorkDate);
             cRunConfigControls.Add(lblStatus);
             //
+
+            // DayOfWeek CheckBoxes
+            cDayOfWeekCheckBoxes.Add(cbSchedule_Sun);
+            cDayOfWeekCheckBoxes.Add(cbSchedule_Mon);
+            cDayOfWeekCheckBoxes.Add(cbSchedule_Tue);
+            cDayOfWeekCheckBoxes.Add(cbSchedule_Wed);
+            cDayOfWeekCheckBoxes.Add(cbSchedule_Thu);
+            cDayOfWeekCheckBoxes.Add(cbSchedule_Fri);
+            cDayOfWeekCheckBoxes.Add(cbSchedule_Sat);
+
+            ChngDayOfWeekChecked();
+            //
         }
 
         private void dgvList_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -131,7 +177,7 @@ namespace TimeScheduler
             if (selSchedule.CYCLE.Equals(ScheduleCycleType.Once))
                 rbSchedule_Once.Checked = true;
             else
-                rbSchedule_Every.Checked = false;
+                rbSchedule_Every.Checked = true;
 
             cCommon.SetDayOfWeekCheckBox(selSchedule.DAYOFWEEK, cbSchedule_Sun, cbSchedule_Mon, cbSchedule_Tue, cbSchedule_Wed, cbSchedule_Thu, cbSchedule_Fri, cbSchedule_Sat);
 
@@ -151,8 +197,27 @@ namespace TimeScheduler
             pRow.Cells["ScheduleCompleted"].Value = cbSchedule_Completed.Checked;
         }
 
-        private void UpdateRowInfo()
+        private void UpdateRowInfo(eSchedule pSchedule)
         {
+            int idx = -1;
+
+            foreach (DataGridViewRow row in dgvList.Rows)
+            {
+                if (row.Cells["ScheduleName"].Value.ToString().NtoE().Equals(pSchedule.NAME))
+                    idx = row.Index;
+            }
+
+            if (idx == -1)
+                return;
+
+            dgvList.Rows[idx].Cells["ScheduleName"].Value = pSchedule.NAME;
+            dgvList.Rows[idx].Cells["ScheduleDate"].Value = pSchedule.DATE;
+            dgvList.Rows[idx].Cells["ScheduleCycle"].Value = pSchedule.CYCLE.Equals(ScheduleCycleType.Once) ? "Once" : "Every";
+            dgvList.Rows[idx].Cells["ScheduleDayOfWeek"].Value = cCommon.ConvertDayOfWeekEnumListToString(pSchedule.DAYOFWEEK);
+            dgvList.Rows[idx].Cells["ScheduleTime"].Value = pSchedule.TIME;
+            dgvList.Rows[idx].Cells["ScheduleMinute"].Value = pSchedule.MINUTE;
+            dgvList.Rows[idx].Cells["ScheduleCompleted"].Value = pSchedule.COMPLETED;
+
         }
 
 
@@ -208,6 +273,8 @@ namespace TimeScheduler
                         break;
                 }
             }
+
+            rbSchedule_Once.Checked = true;
         }
 
         private void ClearRunConfigControls()
@@ -243,6 +310,15 @@ namespace TimeScheduler
             if (dgvList.SelectedRows.Count == 0)
                 return;
 
+            if (!Validation())
+                return;
+
+            if (cWorker.IsBusy)
+            {
+                MessageBox.Show("실행중에는 해당기능을 사용하실 수 없습니다.");
+                return;
+            }
+
             UpdateRowInfo(dgvList.SelectedRows[0]);
             ClearInformControls();
         }
@@ -254,17 +330,55 @@ namespace TimeScheduler
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (!Validation())
+                return;
+
+            if (cWorker.IsBusy)
+            {
+                MessageBox.Show("실행중에는 해당기능을 사용하실 수 없습니다.");
+                return;
+            }
+
             if (!cCommon.IsDupName(dgvList, tbScheduleName.Text))
-                dgvList.Rows.Add(tbScheduleName.Text, tbScheduleDate.Text, rbSchedule_Once.Checked ? "Once" : "Every", cCommon.CheckBoxToDayOfWeek(cbSchedule_Sun, cbSchedule_Mon, cbSchedule_Tue, cbSchedule_Wed, cbSchedule_Thu, cbSchedule_Fri, cbSchedule_Sat),
+                dgvList.Rows.Add(tbScheduleName.Text, rbSchedule_Once.Checked ? "Once" : "Every", tbScheduleDate.Text, cCommon.CheckBoxToDayOfWeek(cbSchedule_Sun, cbSchedule_Mon, cbSchedule_Tue, cbSchedule_Wed, cbSchedule_Thu, cbSchedule_Fri, cbSchedule_Sat),
                                  lblSchedule_Time.Text, lblSchedule_Minute.Text, cbSchedule_Completed.Checked);
             else
                 MessageBox.Show("중복된 이름이 존재합니다 : " + tbScheduleName.Text);
+        }
+
+        public bool Validation()
+        {
+            if (string.IsNullOrEmpty(tbScheduleName.Text))
+            {
+                MessageBox.Show("이름은 빈칸일 수 없습니다.");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(tbScheduleDate.Text) && rbSchedule_Once.Checked)
+            {
+                MessageBox.Show("날짜는 빈칸일 수 없습니다.");
+                return false;
+            }
+
+            if (!cCommon.IsDate(tbScheduleDate.Text) && rbSchedule_Once.Checked)
+            {
+                MessageBox.Show("올바른 날짜 형식이 아닙니다. (" + DateTime.Today.ToString("yyyyMMdd") + " 형식으로 작성해주세요.)");
+                return false;
+            }
+
+            return true;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dgvList.SelectedRows.Count == 0)
                 return;
+
+            if (cWorker.IsBusy)
+            {
+                MessageBox.Show("실행중에는 해당기능을 사용하실 수 없습니다.");
+                return;
+            }
 
             dgvList.Rows.Remove(dgvList.SelectedRows[0]);
         }
@@ -325,6 +439,30 @@ namespace TimeScheduler
 
                 lblStatus.Text = "중지";
                 btnToggleDaemon.Text = "실행";
+            }
+        }
+
+        private void rbSchedule_Once_CheckedChanged(object sender, EventArgs e)
+        {
+            ChngDayOfWeekChecked();
+        }
+
+        public void ChngDayOfWeekChecked()
+        {
+            foreach (CheckBox cb in cDayOfWeekCheckBoxes)
+            {
+
+                if (rbSchedule_Once.Checked)
+                {
+
+                    cb.Checked = false;
+                    cb.Enabled = false;
+                }
+                else
+                {
+                    cb.Enabled = true;
+                }
+
             }
         }
     }
