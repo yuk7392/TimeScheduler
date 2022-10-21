@@ -58,12 +58,15 @@ namespace TimeScheduler
 
                         if (s.DATE.Equals(date) && s.TIME.Equals(time) && s.MINUTE.Equals(min))
                         {
-                            // Alert Here!
-
                             if (s.COMPLETED)
+                            {
                                 break;
+                            }
                             else
+                            {
+                                ShowMessages(s.NAME);
                                 s.COMPLETED = true;
+                            }
                         }
 
                         break;
@@ -74,9 +77,8 @@ namespace TimeScheduler
                         {
                             if (dow.Equals(dayOfWeek) && s.TIME.Equals(time) && s.MINUTE.Equals(min))
                             {
-                                // Alert Here!
+                                ShowMessages(s.NAME);
                                 s.COMPLETED = true;
-
                             }
                             else
                             {
@@ -466,6 +468,14 @@ namespace TimeScheduler
                 }
 
             }
+        }
+
+        public void ShowMessages(string pContext)
+        {
+
+            this.BeginInvoke(new MethodInvoker(delegate { this.Show(); this.WindowState = FormWindowState.Normal; }));
+
+            MessageBox.Show(pContext, "알림");
         }
     }
 }

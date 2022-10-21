@@ -110,7 +110,7 @@ namespace TimeScheduler
                         btnClose.Text = "적용";
 
                 }
-               else
+                else
                 {
                     if (newVal > 59)
                     {
