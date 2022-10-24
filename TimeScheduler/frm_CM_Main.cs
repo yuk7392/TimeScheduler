@@ -20,8 +20,10 @@ namespace TimeScheduler
         BackgroundWorker cWorker = new BackgroundWorker();
         ManualResetEvent cReset = new ManualResetEvent(true);
 
-        public int cWaitTime = 5000;
+        public int cWaitTime = 1000;
         public bool cAutoExecute = false;
+        public bool cAskOnClose = true;
+        public bool cSaveOnDataChange = true;
 
         public event ValueTransfer cValueTransfer;
 
@@ -35,8 +37,7 @@ namespace TimeScheduler
 
         public void LoadSetting()
         {
-            if (!cSetting.IsSettingExists())
-                cSetting.SetDefaultValue();
+            cSetting.SetDefaultValueIfNotExists();
 
             // Cycle Time
             cWaitTime = Int32.Parse(String.IsNullOrEmpty(cSetting.GetValue(cConstraint.SETTINGS_DOWORK_CYCLE_TIME)) ? "1000" : cSetting.GetValue(cConstraint.SETTINGS_DOWORK_CYCLE_TIME));
@@ -45,6 +46,14 @@ namespace TimeScheduler
 
             // 
             cAutoExecute = cSetting.GetValue(cConstraint.SETTINGS_RUN_ON_PROGRAM_START).ToUpper().Equals("TRUE") ? true : false;
+            //
+
+            //
+            cAskOnClose = cSetting.GetValue(cConstraint.SETTINGS_ASK_ON_CLOSE).ToUpper().Equals("TRUE") ? true : false;
+            //
+
+            //
+            cSaveOnDataChange = cSetting.GetValue(cConstraint.SETTINGS_SAVE_ON_DATA_CHANGED).ToUpper().Equals("TRUE") ? true : false;
             //
         }
 
@@ -214,6 +223,9 @@ namespace TimeScheduler
             else
                 rbSchedule_Every.Checked = true;
 
+            foreach (CheckBox c in cDayOfWeekCheckBoxes)
+                c.Checked = false;
+
             cCommon.SetDayOfWeekCheckBox(selSchedule.DAYOFWEEK, cbSchedule_Sun, cbSchedule_Mon, cbSchedule_Tue, cbSchedule_Wed, cbSchedule_Thu, cbSchedule_Fri, cbSchedule_Sat);
 
             lblSchedule_Time.Text = selSchedule.TIME;
@@ -356,15 +368,26 @@ namespace TimeScheduler
 
             UpdateRowInfo(dgvList.SelectedRows[0]);
             ClearInformControls();
+            dgvList.ClearSelection();
+
+            if (cSaveOnDataChange)
+            {
+                cCommon.SaveData(dgvList);
+                MessageBox.Show("저장되었습니다.");
+            }
         }
 
         private void frm_CM_Main_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (MessageBox.Show("내용을 저장하시겠습니까?", String.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
-                return;
+            if (cAskOnClose)
+            {
 
-            cCommon.SaveData(dgvList);
-            MessageBox.Show("저장되었습니다.");
+                if (MessageBox.Show("내용을 저장하시겠습니까?", String.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
+                    return;
+
+                cCommon.SaveData(dgvList);
+                MessageBox.Show("저장되었습니다.");
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -379,10 +402,25 @@ namespace TimeScheduler
             }
 
             if (!cCommon.IsDupName(dgvList, tbScheduleName.Text))
+            {
+
                 dgvList.Rows.Add(tbScheduleName.Text, rbSchedule_Once.Checked ? "Once" : "Every", tbScheduleDate.Text, cCommon.CheckBoxToDayOfWeek(cbSchedule_Sun, cbSchedule_Mon, cbSchedule_Tue, cbSchedule_Wed, cbSchedule_Thu, cbSchedule_Fri, cbSchedule_Sat),
                                  lblSchedule_Time.Text, lblSchedule_Minute.Text, cbSchedule_Completed.Checked);
+
+                ClearInformControls();
+                dgvList.ClearSelection();
+
+                if (cSaveOnDataChange)
+                {
+                    cCommon.SaveData(dgvList);
+                    MessageBox.Show("저장되었습니다.");
+                }
+            }
             else
+            {
+
                 MessageBox.Show("중복된 이름이 존재합니다 : " + tbScheduleName.Text);
+            }
         }
 
         public bool Validation()
@@ -420,6 +458,14 @@ namespace TimeScheduler
             }
 
             dgvList.Rows.Remove(dgvList.SelectedRows[0]);
+            ClearInformControls();
+            dgvList.ClearSelection();
+
+            if (cSaveOnDataChange)
+            {
+                cCommon.SaveData(dgvList);
+                MessageBox.Show("저장되었습니다.");
+            }
         }
 
         private void rbSchedule_Every_CheckedChanged(object sender, EventArgs e)
@@ -623,6 +669,12 @@ namespace TimeScheduler
 
             LoadSetting();
 
+        }
+
+        private void dgvList_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            if (dgvList.SelectedRows.Count == 0)
+                gbInform.Text = "정보";
         }
     }
 }

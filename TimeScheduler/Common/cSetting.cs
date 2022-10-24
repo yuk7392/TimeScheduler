@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 
 namespace TimeScheduler
 {
@@ -28,19 +29,51 @@ namespace TimeScheduler
             cRegKey.DeleteValue(pName);
         }
 
-        public static void SetDefaultValue()
+        public static void RemoveAllValue()
         {
-            SetValue(cConstraint.SETTINGS_DOWORK_CYCLE_TIME, "1000");
-            SetValue(cConstraint.SETTINGS_RUN_ON_PROGRAM_START, "false");
-            SetValue(cConstraint.SETTINGS_LAST_UPDATED_DATE, DateTime.Now.ToString(cConstraint.FORMAT_LAST_UPDATED_DATE));
+            List<string> list = GetSettingNameList();
+
+            foreach (string s in list)
+                RemoveValue(s);
         }
 
-        public static bool IsSettingExists()
+        public static List<string> GetSettingNameList()
         {
-            if (cRegKey.GetValue(cConstraint.SETTINGS_LAST_UPDATED_DATE) == null)
-                return false;
-            else
-                return true;
+            List<string> valNames = new List<string>();
+
+            valNames.Add(cConstraint.SETTINGS_DOWORK_CYCLE_TIME);
+            valNames.Add(cConstraint.SETTINGS_RUN_ON_PROGRAM_START);
+            valNames.Add(cConstraint.SETTINGS_ASK_ON_CLOSE);
+            valNames.Add(cConstraint.SETTINGS_LAST_UPDATED_DATE);
+            valNames.Add(cConstraint.SETTINGS_SAVE_ON_DATA_CHANGED);
+
+            return valNames;
+        }
+
+        public static void SetDefaultValueIfNotExists()
+        {
+            List<string> list = GetSettingNameList();
+
+            foreach (string s in list)
+            {
+                if (cRegKey.GetValue(s) == null)
+                {
+                    if (s.Equals(cConstraint.SETTINGS_DOWORK_CYCLE_TIME))
+                        SetValue(s, "1000");
+
+                    if (s.Equals(cConstraint.SETTINGS_RUN_ON_PROGRAM_START))
+                        SetValue(s, "false");
+
+                    if (s.Equals(cConstraint.SETTINGS_ASK_ON_CLOSE))
+                        SetValue(s, "false");
+
+                    if (s.Equals(cConstraint.SETTINGS_LAST_UPDATED_DATE))
+                        SetValue(s, DateTime.Now.ToString(cConstraint.FORMAT_LAST_UPDATED_DATE));
+
+                    if (s.Equals(cConstraint.SETTINGS_SAVE_ON_DATA_CHANGED))
+                        SetValue(s, "true");
+                }
+            }
         }
     }
 }

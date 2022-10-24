@@ -10,7 +10,10 @@
 
         public static string SETTINGS_DOWORK_CYCLE_TIME = "DOWORK_CYCLE_TIME";
         public static string SETTINGS_RUN_ON_PROGRAM_START = "RUN_ON_PROGRAM_START";
+        public static string SETTINGS_ASK_ON_CLOSE = "ASK_ON_CLOSE";
+        public static string SETTINGS_SAVE_ON_DATA_CHANGED = "SAVE_ON_DATA_CHANGED";
         public static string SETTINGS_LAST_UPDATED_DATE = "LAST_UPDATED_DATE";
+
         public static string FORMAT_LAST_UPDATED_DATE = "yyyy-MM-dd HH:mm:ss";
     }
 }
