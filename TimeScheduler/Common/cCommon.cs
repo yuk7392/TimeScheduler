@@ -9,6 +9,7 @@ namespace TimeScheduler
 {
     public class cCommon
     {
+        #region GetDayOfWeekDate : 입력받은 요일에 해당하는 가장 가까운 날짜를 반환한다.
         /// <summary>
         /// 입력받은 요일에 해당하는 가장 가까운 날짜를 반환한다.
         /// </summary>
@@ -29,7 +30,9 @@ namespace TimeScheduler
 
             return dateTime;
         }
+        #endregion
 
+        #region GetDayOfWeekOfDate : 입력받은 날짜(yyyyMMDD)의 요일을 반환한다.
         /// <summary>
         /// 입력받은 날짜(yyyyMMDD)의 요일을 반환한다.
         /// </summary>
@@ -44,7 +47,9 @@ namespace TimeScheduler
 
             return dateTime.DayOfWeek;
         }
+        #endregion
 
+        #region IsDupName : 중복된 이름이 있는지 확인한다.
         /// <summary>
         /// 중복된 이름이 있는지 확인한다.
         /// </summary>
@@ -60,7 +65,13 @@ namespace TimeScheduler
 
             return false;
         }
+        #endregion
 
+        #region SaveData : DataGridView의 정보를 프로그램 폴더에 CSV형태로 저장한다.
+        /// <summary>
+        /// DataGridView의 정보를 프로그램 폴더에 CSV형태로 저장한다.
+        /// </summary>
+        /// <param name="pDataGridView"></param>
         public static void SaveData(DataGridView pDataGridView)
         {
             DirectoryInfo dirInfo = new DirectoryInfo(cConstraint.CSV_LOCATION);
@@ -85,7 +96,13 @@ namespace TimeScheduler
 
             File.WriteAllText(cConstraint.CSV_ABSOLUTE_LOCATION, sb.ToString());
         }
+        #endregion
 
+        #region LoadData : 저장된 CSV파일을 읽어서 DataGridView의 Row로 변환한다.
+        /// <summary>
+        /// 저장된 CSV파일을 읽어서 DataGridView의 Row로 변환한다.
+        /// </summary>
+        /// <param name="pDataGridView"></param>
         public static void LoadData(DataGridView pDataGridView)
         {
 
@@ -106,7 +123,12 @@ namespace TimeScheduler
                 pDataGridView.Rows.Add(rowData[0], rowData[1], rowData[2], ConvertIntToDayOfWeek(rowData[3].ToString().NtoE()), rowData[4], rowData[5], rowData[6].ToString().NtoE().ToUpper().Equals("TRUE") ? true : false);
             }
         }
+        #endregion
 
+        #region ResetCsv : CSV 파일을 초기화한다.
+        /// <summary>
+        /// CSV 파일을 초기화한다.
+        /// </summary>
         public static void ResetCsv()
         {
             if (File.Exists(cConstraint.CSV_ABSOLUTE_LOCATION))
@@ -117,7 +139,14 @@ namespace TimeScheduler
 
             }
         }
+        #endregion
 
+        #region ConvertToEntity : DataGridViewRow의 정보를 eSchedule로 변환한다.
+        /// <summary>
+        /// DataGridViewRow의 정보를 eSchedule로 변환한다.
+        /// </summary>
+        /// <param name="pRow"></param>
+        /// <returns></returns>
         public static eSchedule ConvertToEntity(DataGridViewRow pRow)
         {
             eSchedule eSchedule = new eSchedule();
@@ -132,7 +161,9 @@ namespace TimeScheduler
 
             return eSchedule;
         }
+        #endregion
 
+        #region ConvertDayOfWeekToInt : 요일을 Int형식으로 변환한다.
         public static string ConvertDayOfWeekToInt(string pDayOfWeek)
         {
             StringBuilder sb = new StringBuilder();
@@ -160,7 +191,20 @@ namespace TimeScheduler
 
             return sb.ToString();
         }
+        #endregion
 
+        #region SetDayOfWeekCheckBox : 요일 리스트에 들어있는 요소들과 매칭하여 체크박스를 체크한다.
+        /// <summary>
+        /// 요일 리스트에 들어있는 요소들과 매칭하여 체크박스를 체크한다.
+        /// </summary>
+        /// <param name="pList"></param>
+        /// <param name="pCb1"></param>
+        /// <param name="pCb2"></param>
+        /// <param name="pCb3"></param>
+        /// <param name="pCb4"></param>
+        /// <param name="pCb5"></param>
+        /// <param name="pCb6"></param>
+        /// <param name="pCb7"></param>
         public static void SetDayOfWeekCheckBox(List<DayOfWeek> pList, CheckBox pCb1, CheckBox pCb2, CheckBox pCb3, CheckBox pCb4, CheckBox pCb5, CheckBox pCb6, CheckBox pCb7)
         {
             foreach (DayOfWeek day in pList)
@@ -200,7 +244,20 @@ namespace TimeScheduler
                 }
             }
         }
+        #endregion
 
+        #region CheckBoxToDayOfWeek : 요일 체크박스의 체크여부를 요일로 변환한다.
+        /// <summary>
+        /// 요일 체크박스의 체크여부를 요일로 변환한다.
+        /// </summary>
+        /// <param name="pCb1"></param>
+        /// <param name="pCb2"></param>
+        /// <param name="pCb3"></param>
+        /// <param name="pCb4"></param>
+        /// <param name="pCb5"></param>
+        /// <param name="pCb6"></param>
+        /// <param name="pCb7"></param>
+        /// <returns></returns>
         public static string CheckBoxToDayOfWeek(CheckBox pCb1, CheckBox pCb2, CheckBox pCb3, CheckBox pCb4, CheckBox pCb5, CheckBox pCb6, CheckBox pCb7)
         {
             StringBuilder sb = new StringBuilder();
@@ -228,7 +285,14 @@ namespace TimeScheduler
 
             return sb.ToString();
         }
+        #endregion
 
+        #region ConvertDayOfWeekToEnum : 요일을 DayOfWeek(Enum)으로 변환한다.
+        /// <summary>
+        /// 요일을 DayOfWeek(Enum)으로 변환한다.
+        /// </summary>
+        /// <param name="pDayOfWeek"></param>
+        /// <returns></returns>
         public static List<DayOfWeek> ConvertDayOfWeekToEnum(string pDayOfWeek)
         {
 
@@ -257,7 +321,14 @@ namespace TimeScheduler
 
             return dayOfWeek;
         }
+        #endregion
 
+        #region ConvertIntToDayOfWeek : int형식을 요일로 변환한다.
+        /// <summary>
+        /// int형식을 요일로 변환한다.
+        /// </summary>
+        /// <param name="pInt"></param>
+        /// <returns></returns>
         public static string ConvertIntToDayOfWeek(string pInt)
         {
             StringBuilder sb = new StringBuilder();
@@ -285,15 +356,28 @@ namespace TimeScheduler
 
             return sb.ToString();
         }
+        #endregion
 
+        #region IsDate : yyyyMMdd 형식의 날짜인지 확인한다.
+        /// <summary>
+        /// yyyyMMdd 형식의 날짜인지 확인한다.
+        /// </summary>
+        /// <param name="pString"></param>
+        /// <returns></returns>
         public static bool IsDate(string pString)
         {
             DateTime dateTime;
 
             return DateTime.TryParseExact(pString, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out dateTime);
-
         }
+        #endregion
 
+        #region ConvertDayOfWeekEnumListToString : DayOfWeek(Enum) 리스트를 string으로 변환한다.
+        /// <summary>
+        /// DayOfWeek(Enum) 리스트를 string으로 변환한다.
+        /// </summary>
+        /// <param name="pDayOfWeekList"></param>
+        /// <returns></returns>
         public static string ConvertDayOfWeekEnumListToString(List<DayOfWeek> pDayOfWeekList)
         {
             StringBuilder sb = new StringBuilder();
@@ -324,7 +408,14 @@ namespace TimeScheduler
 
             return sb.ToString();
         }
+        #endregion
 
+        #region RemoveCompletedRow : 완료된 Row를 제거한다, Cycle이 Every인 항목은 제외한다.
+        /// <summary>
+        /// 완료된 Row를 제거한다, Cycle이 Every인 항목은 제외한다.
+        /// </summary>
+        /// <param name="pDataGridView"></param>
+        /// <returns></returns>
         public static int RemoveCompletedRow(DataGridView pDataGridView)
         {
             int cnt = 0;
@@ -343,10 +434,17 @@ namespace TimeScheduler
 
             return cnt;
         }
+        #endregion
     }
 
     public static class cCommonExtension
     {
+        #region NtoE : null 이거나 비어있는 문자를 string.Empty로 치환한다.
+        /// <summary>
+        /// null 이거나 비어있는 문자를 string.Empty로 치환한다.
+        /// </summary>
+        /// <param name="pString"></param>
+        /// <returns></returns>
         public static string NtoE(this string pString)
         {
             if (string.IsNullOrEmpty(pString))
@@ -354,5 +452,6 @@ namespace TimeScheduler
 
             return pString;
         }
+        #endregion
     }
 }

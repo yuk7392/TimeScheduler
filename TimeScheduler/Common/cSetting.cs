@@ -6,8 +6,17 @@ namespace TimeScheduler
 {
     public class cSetting
     {
+        /// <summary>
+        /// 설정 경로
+        /// </summary>
         private static RegistryKey cRegKey = Registry.CurrentUser.CreateSubKey(cConstraint.REG_PROGRAM_PATH + @"\Setting");
 
+        #region GetValue : Key값을 통하여 값을 가져온다.
+        /// <summary>
+        /// Key값을 통하여 값을 가져온다.
+        /// </summary>
+        /// <param name="pName"></param>
+        /// <returns></returns>
         public static string GetValue(string pName)
         {
             if (cRegKey.GetValue(pName) == null)
@@ -15,12 +24,25 @@ namespace TimeScheduler
             else
                 return cRegKey.GetValue(pName).ToString().NtoE();
         }
+        #endregion
 
+        #region SetValue : Key와 Value를 매칭하여 저장한다.
+        /// <summary>
+        /// Key와 Value를 매칭하여 저장한다.
+        /// </summary>
+        /// <param name="pName"></param>
+        /// <param name="pValue"></param>
         public static void SetValue(string pName, string pValue)
         {
             cRegKey.SetValue(pName, pValue);
         }
+        #endregion
 
+        #region RemoveValue : Key값을 통하여 값을 삭제한다.
+        /// <summary>
+        /// Key값을 통하여 값을 삭제한다.
+        /// </summary>
+        /// <param name="pName"></param>
         public static void RemoveValue(string pName)
         {
             if (cRegKey.GetValue(pName) == null)
@@ -28,7 +50,12 @@ namespace TimeScheduler
 
             cRegKey.DeleteValue(pName);
         }
+        #endregion
 
+        #region RemoveAllValue : 모든값을 삭제한다.
+        /// <summary>
+        /// 모든값을 삭제한다.
+        /// </summary>
         public static void RemoveAllValue()
         {
             List<string> list = GetSettingNameList();
@@ -36,7 +63,13 @@ namespace TimeScheduler
             foreach (string s in list)
                 RemoveValue(s);
         }
+        #endregion
 
+        #region GetSettingNameList : 설정에 사용된 Key이름 리스트을 불러온다.
+        /// <summary>
+        /// 설정에 사용된 Key이름 리스트을 불러온다.
+        /// </summary>
+        /// <returns></returns>
         public static List<string> GetSettingNameList()
         {
             List<string> valNames = new List<string>();
@@ -49,7 +82,12 @@ namespace TimeScheduler
 
             return valNames;
         }
+        #endregion
 
+        #region SetDefaultValueIfNotExists : 설정 항목이 존재하지 않으면 기본값으로 항목을 생성한다.
+        /// <summary>
+        /// 설정 항목이 존재하지 않으면 기본값으로 항목을 생성한다.
+        /// </summary>
         public static void SetDefaultValueIfNotExists()
         {
             List<string> list = GetSettingNameList();
@@ -75,5 +113,6 @@ namespace TimeScheduler
                 }
             }
         }
+        #endregion
     }
 }
