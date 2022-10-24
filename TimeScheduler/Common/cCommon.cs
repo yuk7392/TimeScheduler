@@ -343,7 +343,6 @@ namespace TimeScheduler
 
             return cnt;
         }
-
     }
 
     public static class cCommonExtension

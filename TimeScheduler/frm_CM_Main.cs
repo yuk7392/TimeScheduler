@@ -19,7 +19,9 @@ namespace TimeScheduler
         List<CheckBox> cDayOfWeekCheckBoxes = new List<CheckBox>();
         BackgroundWorker cWorker = new BackgroundWorker();
         ManualResetEvent cReset = new ManualResetEvent(true);
+
         public int cWaitTime = 5000;
+        public bool cAutoExecute = false;
 
         public event ValueTransfer cValueTransfer;
 
@@ -29,6 +31,21 @@ namespace TimeScheduler
 
             cWorker.WorkerSupportsCancellation = true;
             this.Text = "Time Scheduler (" + Assembly.GetExecutingAssembly().GetName().Version + ")";
+        }
+
+        public void LoadSetting()
+        {
+            if (!cSetting.IsSettingExists())
+                cSetting.SetDefaultValue();
+
+            // Cycle Time
+            cWaitTime = Int32.Parse(String.IsNullOrEmpty(cSetting.GetValue(cConstraint.SETTINGS_DOWORK_CYCLE_TIME)) ? "1000" : cSetting.GetValue(cConstraint.SETTINGS_DOWORK_CYCLE_TIME));
+            tbWaitLatency.Text = cWaitTime.ToString();
+            //
+
+            // 
+            cAutoExecute = cSetting.GetValue(cConstraint.SETTINGS_RUN_ON_PROGRAM_START).ToUpper().Equals("TRUE") ? true : false;
+            //
         }
 
         private void cWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -129,7 +146,11 @@ namespace TimeScheduler
         private void frm_CM_Main_Load(object sender, EventArgs e)
         {
             cCommon.LoadData(dgvList);
-            tbWaitLatency.Text = cWaitTime.ToString();
+
+            LoadSetting();
+
+            if (cAutoExecute)
+                btnToggleDaemon.PerformClick();
 
             // Inform
             cInformControls.Add(tbScheduleName);
@@ -429,7 +450,7 @@ namespace TimeScheduler
                 if (Int32.TryParse(tbWaitLatency.Text, out latency))
                     cWaitTime = latency;
                 else
-                    cWaitTime = 5000;
+                    cWaitTime = Int32.Parse(cSetting.GetValue(cConstraint.SETTINGS_DOWORK_CYCLE_TIME));
 
                 tbWaitLatency.Text = cWaitTime.ToString();
 
@@ -591,8 +612,17 @@ namespace TimeScheduler
 
         private void btnSetting_Click(object sender, EventArgs e)
         {
+            if (cWorker.IsBusy)
+            {
+                MessageBox.Show("실행중에는 해당기능을 사용하실 수 없습니다.");
+                return;
+            }
+
             frm_CM_Settings frm = new frm_CM_Settings();
             frm.ShowDialog();
+
+            LoadSetting();
+
         }
     }
 }

@@ -47,7 +47,7 @@
   <ItemGroup>
     <Compile Include="Common\cCommon.cs" />
     <Compile Include="Common\cConstraint.cs" />
-    <Compile Include="Common\cRegistryUtil.cs" />
+    <Compile Include="Common\cSetting.cs" />
     <Compile Include="Common\eEntity.cs" />
     <Compile Include="frm_CM_HMPicker.cs">
       <SubType>Form</SubType>
