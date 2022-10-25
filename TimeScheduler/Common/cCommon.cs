@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -434,6 +435,40 @@ namespace TimeScheduler
 
             return cnt;
         }
+        #endregion
+
+        #region CompareVersion : 두 버전을 비교한다, 동일버전이면 0, 구버전이면 -1, 신버전이거나 null이면 1을 반환한다.
+        /// <summary>
+        /// 두 버전을 비교한다, 동일버전이면 0, 구버전이면 -1, 신버전이거나 null이면 1을 반환한다.
+        /// </summary>
+        /// <param name="pVersion1"></param>
+        /// <param name="pVersion2"></param>
+        /// <returns></returns>
+        public static int CompareVersion(string pVersion1, string pVersion2)
+        {
+            Version v1 = new Version(pVersion1);
+            Version v2 = new Version(pVersion2);
+
+            int val = v1.CompareTo(v2);
+
+            return val == 0 ? 0 : val > 0 ? 1 : -1;
+        }
+        #endregion
+
+        #region GetExecutionFileVersion : 실행파일의 Assembly Version을 반환한다.
+        /// <summary>
+        /// 실행파일의 Assembly Version을 반환한다.
+        /// </summary>
+        /// <param name="pPath"></param>
+        /// <returns></returns>
+        public static string GetFileAssemblyVersion(string pPath)
+        {
+            if (!File.Exists(pPath))
+                return string.Empty;
+
+            return AssemblyName.GetAssemblyName(pPath).Version.ToString();
+        }
+
         #endregion
     }
 
