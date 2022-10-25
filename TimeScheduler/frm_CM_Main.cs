@@ -350,6 +350,7 @@ namespace TimeScheduler
         {
             gbInform.Text = "정보";
             ClearInformControls();
+            dgvList.ClearSelection();
         }
 
         private void btnModify_Click(object sender, EventArgs e)
@@ -558,7 +559,7 @@ namespace TimeScheduler
 
             this.BeginInvoke(new MethodInvoker(delegate { this.Show(); this.WindowState = FormWindowState.Normal; }));
 
-            MessageBox.Show(pContext, "알림");
+            MessageBox.Show(pContext, "알림", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
         }
 
         private void btnDeleteCompleted_Click(object sender, EventArgs e)
