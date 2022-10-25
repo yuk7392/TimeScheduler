@@ -51,7 +51,7 @@
             this.lblValue.Name = "lblValue";
             this.lblValue.Size = new System.Drawing.Size(200, 74);
             this.lblValue.TabIndex = 0;
-            this.lblValue.Text = "0";
+            this.lblValue.Text = "00";
             this.lblValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel1
