@@ -215,13 +215,13 @@ namespace TimeScheduler
         {
             eSchedule selSchedule = cCommon.ConvertToEntity(pRow);
 
-            tbScheduleName.Text = selSchedule.NAME;
-            tbScheduleDate.Text = selSchedule.DATE;
-
             if (selSchedule.CYCLE.Equals(ScheduleCycleType.Once))
                 rbSchedule_Once.Checked = true;
             else
                 rbSchedule_Every.Checked = true;
+
+            tbScheduleName.Text = selSchedule.NAME;
+            tbScheduleDate.Text = selSchedule.DATE;
 
             foreach (CheckBox c in cDayOfWeekCheckBoxes)
                 c.Checked = false;
@@ -230,6 +230,7 @@ namespace TimeScheduler
 
             lblSchedule_Time.Text = selSchedule.TIME;
             lblSchedule_Minute.Text = selSchedule.MINUTE;
+
             cbSchedule_Completed.Checked = selSchedule.COMPLETED;
         }
 
