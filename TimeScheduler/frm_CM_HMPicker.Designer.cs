@@ -37,9 +37,11 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tbValue = new System.Windows.Forms.TextBox();
             this.lblApply = new System.Windows.Forms.Label();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblValue
@@ -49,7 +51,7 @@
             this.lblValue.Font = new System.Drawing.Font("맑은 고딕", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblValue.Location = new System.Drawing.Point(4, 1);
             this.lblValue.Name = "lblValue";
-            this.lblValue.Size = new System.Drawing.Size(200, 74);
+            this.lblValue.Size = new System.Drawing.Size(196, 66);
             this.lblValue.TabIndex = 0;
             this.lblValue.Text = "00";
             this.lblValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -67,11 +69,11 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(417, 76);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(409, 68);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // btnClose
@@ -79,9 +81,9 @@
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Location = new System.Drawing.Point(336, 4);
+            this.btnClose.Location = new System.Drawing.Point(329, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(77, 68);
+            this.btnClose.Size = new System.Drawing.Size(76, 60);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "적용";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -96,12 +98,12 @@
             this.tableLayoutPanel2.Controls.Add(this.btnDown, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.btnUp, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(294, 4);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(288, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(35, 68);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(34, 60);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // btnDown
@@ -109,9 +111,9 @@
             this.btnDown.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDown.FlatAppearance.BorderSize = 0;
             this.btnDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDown.Location = new System.Drawing.Point(4, 37);
+            this.btnDown.Location = new System.Drawing.Point(4, 33);
             this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(27, 27);
+            this.btnDown.Size = new System.Drawing.Size(26, 23);
             this.btnDown.TabIndex = 3;
             this.btnDown.Text = "↓";
             this.btnDown.UseVisualStyleBackColor = true;
@@ -124,7 +126,7 @@
             this.btnUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUp.Location = new System.Drawing.Point(4, 4);
             this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(27, 26);
+            this.btnUp.Size = new System.Drawing.Size(26, 22);
             this.btnUp.TabIndex = 2;
             this.btnUp.Text = "↑";
             this.btnUp.UseVisualStyleBackColor = true;
@@ -138,12 +140,12 @@
             this.tableLayoutPanel3.Controls.Add(this.tbValue, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.lblApply, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(211, 4);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(207, 4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(76, 68);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(74, 60);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
             // tbValue
@@ -153,7 +155,7 @@
             this.tbValue.Multiline = true;
             this.tbValue.Name = "tbValue";
             this.tbValue.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbValue.Size = new System.Drawing.Size(68, 33);
+            this.tbValue.Size = new System.Drawing.Size(66, 28);
             this.tbValue.TabIndex = 0;
             this.tbValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -161,13 +163,29 @@
             // 
             this.lblApply.AutoSize = true;
             this.lblApply.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblApply.Location = new System.Drawing.Point(4, 41);
+            this.lblApply.Location = new System.Drawing.Point(4, 36);
             this.lblApply.Name = "lblApply";
-            this.lblApply.Size = new System.Drawing.Size(68, 26);
+            this.lblApply.Size = new System.Drawing.Size(66, 23);
             this.lblApply.TabIndex = 1;
             this.lblApply.Text = "시간적용";
             this.lblApply.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblApply.Click += new System.EventHandler(this.lblApply_Click);
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel1, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(417, 76);
+            this.tableLayoutPanel4.TabIndex = 2;
             // 
             // frm_CM_HMPicker
             // 
@@ -175,7 +193,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(417, 76);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.tableLayoutPanel4);
             this.Font = new System.Drawing.Font("맑은 고딕", 10F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -188,6 +206,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -203,5 +222,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TextBox tbValue;
         private System.Windows.Forms.Label lblApply;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
     }
 }

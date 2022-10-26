@@ -99,6 +99,7 @@
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnSetting = new System.Windows.Forms.Button();
             this.btnDeleteAll = new System.Windows.Forms.Button();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -113,6 +114,7 @@
             this.tableLayoutPanel9.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
+            this.tableLayoutPanel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -126,11 +128,11 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1232, 622);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1224, 614);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // dgvList
@@ -171,7 +173,7 @@
             this.dgvList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvList.RowTemplate.Height = 23;
             this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvList.Size = new System.Drawing.Size(792, 614);
+            this.dgvList.Size = new System.Drawing.Size(787, 606);
             this.dgvList.TabIndex = 0;
             this.dgvList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellClick);
             this.dgvList.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvList_RowStateChanged);
@@ -231,13 +233,13 @@
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel6, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.groupBox1, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(865, 4);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(860, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(363, 614);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(360, 606);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // gbInform
@@ -246,7 +248,7 @@
             this.gbInform.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbInform.Location = new System.Drawing.Point(4, 4);
             this.gbInform.Name = "gbInform";
-            this.gbInform.Size = new System.Drawing.Size(355, 360);
+            this.gbInform.Size = new System.Drawing.Size(352, 355);
             this.gbInform.TabIndex = 0;
             this.gbInform.TabStop = false;
             this.gbInform.Text = "정보";
@@ -283,17 +285,17 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.48939F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.14258F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(349, 336);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(346, 331);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // tbScheduleDate
             // 
             this.tbScheduleDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbScheduleDate.Location = new System.Drawing.Point(108, 44);
+            this.tbScheduleDate.Location = new System.Drawing.Point(107, 44);
             this.tbScheduleDate.Multiline = true;
             this.tbScheduleDate.Name = "tbScheduleDate";
             this.tbScheduleDate.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbScheduleDate.Size = new System.Drawing.Size(237, 33);
+            this.tbScheduleDate.Size = new System.Drawing.Size(235, 33);
             this.tbScheduleDate.TabIndex = 2;
             this.tbScheduleDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -303,7 +305,7 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(4, 41);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 39);
+            this.label2.Size = new System.Drawing.Size(96, 39);
             this.label2.TabIndex = 1;
             this.label2.Text = "날짜";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -317,12 +319,12 @@
             this.tableLayoutPanel5.Controls.Add(this.lblSchedule_Minute, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.lblMinutes_Chng, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(108, 253);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(107, 250);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(237, 41);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(235, 40);
             this.tableLayoutPanel5.TabIndex = 19;
             // 
             // lblSchedule_Minute
@@ -331,7 +333,7 @@
             this.lblSchedule_Minute.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblSchedule_Minute.Location = new System.Drawing.Point(4, 1);
             this.lblSchedule_Minute.Name = "lblSchedule_Minute";
-            this.lblSchedule_Minute.Size = new System.Drawing.Size(157, 39);
+            this.lblSchedule_Minute.Size = new System.Drawing.Size(156, 38);
             this.lblSchedule_Minute.TabIndex = 6;
             this.lblSchedule_Minute.Text = "00";
             this.lblSchedule_Minute.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -340,9 +342,9 @@
             // 
             this.lblMinutes_Chng.AutoSize = true;
             this.lblMinutes_Chng.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblMinutes_Chng.Location = new System.Drawing.Point(168, 1);
+            this.lblMinutes_Chng.Location = new System.Drawing.Point(167, 1);
             this.lblMinutes_Chng.Name = "lblMinutes_Chng";
-            this.lblMinutes_Chng.Size = new System.Drawing.Size(65, 39);
+            this.lblMinutes_Chng.Size = new System.Drawing.Size(64, 38);
             this.lblMinutes_Chng.TabIndex = 8;
             this.lblMinutes_Chng.Text = "변경";
             this.lblMinutes_Chng.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -352,9 +354,9 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Location = new System.Drawing.Point(4, 298);
+            this.label11.Location = new System.Drawing.Point(4, 294);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(97, 37);
+            this.label11.Size = new System.Drawing.Size(96, 36);
             this.label11.TabIndex = 11;
             this.label11.Text = "완료여부";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -363,9 +365,9 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(4, 250);
+            this.label9.Location = new System.Drawing.Point(4, 247);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(97, 47);
+            this.label9.Size = new System.Drawing.Size(96, 46);
             this.label9.TabIndex = 9;
             this.label9.Text = "분";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -374,9 +376,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(4, 202);
+            this.label7.Location = new System.Drawing.Point(4, 200);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(97, 47);
+            this.label7.Size = new System.Drawing.Size(96, 46);
             this.label7.TabIndex = 7;
             this.label7.Text = "시간";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -385,9 +387,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(4, 129);
+            this.label5.Location = new System.Drawing.Point(4, 128);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 72);
+            this.label5.Size = new System.Drawing.Size(96, 71);
             this.label5.TabIndex = 5;
             this.label5.Text = "요일";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -398,7 +400,7 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Location = new System.Drawing.Point(4, 81);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 47);
+            this.label3.Size = new System.Drawing.Size(96, 46);
             this.label3.TabIndex = 2;
             this.label3.Text = "주기";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -409,7 +411,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(4, 1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 39);
+            this.label1.Size = new System.Drawing.Size(96, 39);
             this.label1.TabIndex = 0;
             this.label1.Text = "일정명";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -417,11 +419,11 @@
             // tbScheduleName
             // 
             this.tbScheduleName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbScheduleName.Location = new System.Drawing.Point(108, 4);
+            this.tbScheduleName.Location = new System.Drawing.Point(107, 4);
             this.tbScheduleName.Multiline = true;
             this.tbScheduleName.Name = "tbScheduleName";
             this.tbScheduleName.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbScheduleName.Size = new System.Drawing.Size(237, 33);
+            this.tbScheduleName.Size = new System.Drawing.Size(235, 33);
             this.tbScheduleName.TabIndex = 1;
             this.tbScheduleName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -434,21 +436,21 @@
             this.tableLayoutPanel4.Controls.Add(this.lblHours_Chng, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.lblSchedule_Time, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(108, 205);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(107, 203);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(237, 41);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(235, 40);
             this.tableLayoutPanel4.TabIndex = 18;
             // 
             // lblHours_Chng
             // 
             this.lblHours_Chng.AutoSize = true;
             this.lblHours_Chng.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHours_Chng.Location = new System.Drawing.Point(168, 1);
+            this.lblHours_Chng.Location = new System.Drawing.Point(167, 1);
             this.lblHours_Chng.Name = "lblHours_Chng";
-            this.lblHours_Chng.Size = new System.Drawing.Size(65, 39);
+            this.lblHours_Chng.Size = new System.Drawing.Size(64, 38);
             this.lblHours_Chng.TabIndex = 8;
             this.lblHours_Chng.Text = "변경";
             this.lblHours_Chng.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -460,7 +462,7 @@
             this.lblSchedule_Time.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblSchedule_Time.Location = new System.Drawing.Point(4, 1);
             this.lblSchedule_Time.Name = "lblSchedule_Time";
-            this.lblSchedule_Time.Size = new System.Drawing.Size(157, 39);
+            this.lblSchedule_Time.Size = new System.Drawing.Size(156, 38);
             this.lblSchedule_Time.TabIndex = 5;
             this.lblSchedule_Time.Text = "00";
             this.lblSchedule_Time.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -474,21 +476,21 @@
             this.tableLayoutPanel7.Controls.Add(this.rbSchedule_Every, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.rbSchedule_Once, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(108, 84);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(107, 84);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(237, 41);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(235, 40);
             this.tableLayoutPanel7.TabIndex = 20;
             // 
             // rbSchedule_Every
             // 
             this.rbSchedule_Every.AutoSize = true;
             this.rbSchedule_Every.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rbSchedule_Every.Location = new System.Drawing.Point(122, 4);
+            this.rbSchedule_Every.Location = new System.Drawing.Point(121, 4);
             this.rbSchedule_Every.Name = "rbSchedule_Every";
-            this.rbSchedule_Every.Size = new System.Drawing.Size(111, 33);
+            this.rbSchedule_Every.Size = new System.Drawing.Size(110, 32);
             this.rbSchedule_Every.TabIndex = 4;
             this.rbSchedule_Every.TabStop = true;
             this.rbSchedule_Every.Text = "매주";
@@ -503,7 +505,7 @@
             this.rbSchedule_Once.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rbSchedule_Once.Location = new System.Drawing.Point(4, 4);
             this.rbSchedule_Once.Name = "rbSchedule_Once";
-            this.rbSchedule_Once.Size = new System.Drawing.Size(111, 33);
+            this.rbSchedule_Once.Size = new System.Drawing.Size(110, 32);
             this.rbSchedule_Once.TabIndex = 3;
             this.rbSchedule_Once.TabStop = true;
             this.rbSchedule_Once.Text = "한번만";
@@ -516,9 +518,9 @@
             this.cbSchedule_Completed.AutoSize = true;
             this.cbSchedule_Completed.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbSchedule_Completed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbSchedule_Completed.Location = new System.Drawing.Point(108, 301);
+            this.cbSchedule_Completed.Location = new System.Drawing.Point(107, 297);
             this.cbSchedule_Completed.Name = "cbSchedule_Completed";
-            this.cbSchedule_Completed.Size = new System.Drawing.Size(237, 31);
+            this.cbSchedule_Completed.Size = new System.Drawing.Size(235, 30);
             this.cbSchedule_Completed.TabIndex = 22;
             this.cbSchedule_Completed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbSchedule_Completed.UseVisualStyleBackColor = true;
@@ -549,12 +551,12 @@
             this.tableLayoutPanel8.Controls.Add(this.label15, 6, 0);
             this.tableLayoutPanel8.Controls.Add(this.label14, 5, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(108, 132);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(107, 131);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(237, 66);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(235, 65);
             this.tableLayoutPanel8.TabIndex = 23;
             // 
             // cbSchedule_Sun
@@ -564,7 +566,7 @@
             this.cbSchedule_Sun.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbSchedule_Sun.Location = new System.Drawing.Point(4, 36);
             this.cbSchedule_Sun.Name = "cbSchedule_Sun";
-            this.cbSchedule_Sun.Size = new System.Drawing.Size(26, 26);
+            this.cbSchedule_Sun.Size = new System.Drawing.Size(26, 25);
             this.cbSchedule_Sun.TabIndex = 29;
             this.cbSchedule_Sun.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbSchedule_Sun.UseVisualStyleBackColor = true;
@@ -576,7 +578,7 @@
             this.cbSchedule_Wed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbSchedule_Wed.Location = new System.Drawing.Point(103, 36);
             this.cbSchedule_Wed.Name = "cbSchedule_Wed";
-            this.cbSchedule_Wed.Size = new System.Drawing.Size(26, 26);
+            this.cbSchedule_Wed.Size = new System.Drawing.Size(26, 25);
             this.cbSchedule_Wed.TabIndex = 28;
             this.cbSchedule_Wed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbSchedule_Wed.UseVisualStyleBackColor = true;
@@ -588,7 +590,7 @@
             this.cbSchedule_Tue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbSchedule_Tue.Location = new System.Drawing.Point(70, 36);
             this.cbSchedule_Tue.Name = "cbSchedule_Tue";
-            this.cbSchedule_Tue.Size = new System.Drawing.Size(26, 26);
+            this.cbSchedule_Tue.Size = new System.Drawing.Size(26, 25);
             this.cbSchedule_Tue.TabIndex = 27;
             this.cbSchedule_Tue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbSchedule_Tue.UseVisualStyleBackColor = true;
@@ -600,7 +602,7 @@
             this.cbSchedule_Mon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbSchedule_Mon.Location = new System.Drawing.Point(37, 36);
             this.cbSchedule_Mon.Name = "cbSchedule_Mon";
-            this.cbSchedule_Mon.Size = new System.Drawing.Size(26, 26);
+            this.cbSchedule_Mon.Size = new System.Drawing.Size(26, 25);
             this.cbSchedule_Mon.TabIndex = 26;
             this.cbSchedule_Mon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbSchedule_Mon.UseVisualStyleBackColor = true;
@@ -612,7 +614,7 @@
             this.cbSchedule_Sat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbSchedule_Sat.Location = new System.Drawing.Point(202, 36);
             this.cbSchedule_Sat.Name = "cbSchedule_Sat";
-            this.cbSchedule_Sat.Size = new System.Drawing.Size(31, 26);
+            this.cbSchedule_Sat.Size = new System.Drawing.Size(29, 25);
             this.cbSchedule_Sat.TabIndex = 25;
             this.cbSchedule_Sat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbSchedule_Sat.UseVisualStyleBackColor = true;
@@ -624,7 +626,7 @@
             this.cbSchedule_Fri.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbSchedule_Fri.Location = new System.Drawing.Point(169, 36);
             this.cbSchedule_Fri.Name = "cbSchedule_Fri";
-            this.cbSchedule_Fri.Size = new System.Drawing.Size(26, 26);
+            this.cbSchedule_Fri.Size = new System.Drawing.Size(26, 25);
             this.cbSchedule_Fri.TabIndex = 24;
             this.cbSchedule_Fri.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbSchedule_Fri.UseVisualStyleBackColor = true;
@@ -636,7 +638,7 @@
             this.cbSchedule_Thu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbSchedule_Thu.Location = new System.Drawing.Point(136, 36);
             this.cbSchedule_Thu.Name = "cbSchedule_Thu";
-            this.cbSchedule_Thu.Size = new System.Drawing.Size(26, 26);
+            this.cbSchedule_Thu.Size = new System.Drawing.Size(26, 25);
             this.cbSchedule_Thu.TabIndex = 23;
             this.cbSchedule_Thu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbSchedule_Thu.UseVisualStyleBackColor = true;
@@ -705,7 +707,7 @@
             this.label15.ForeColor = System.Drawing.Color.Blue;
             this.label15.Location = new System.Drawing.Point(202, 1);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(31, 31);
+            this.label15.Size = new System.Drawing.Size(29, 31);
             this.label15.TabIndex = 14;
             this.label15.Text = "토";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -736,11 +738,11 @@
             this.tableLayoutPanel6.Controls.Add(this.btnReset, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.btnToggleDaemon, 4, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(4, 555);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(4, 547);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(355, 55);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(352, 55);
             this.tableLayoutPanel6.TabIndex = 2;
             // 
             // btnAdd
@@ -802,7 +804,7 @@
             this.btnToggleDaemon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnToggleDaemon.Location = new System.Drawing.Point(284, 4);
             this.btnToggleDaemon.Name = "btnToggleDaemon";
-            this.btnToggleDaemon.Size = new System.Drawing.Size(67, 47);
+            this.btnToggleDaemon.Size = new System.Drawing.Size(64, 47);
             this.btnToggleDaemon.TabIndex = 5;
             this.btnToggleDaemon.Text = "실행";
             this.btnToggleDaemon.UseVisualStyleBackColor = true;
@@ -812,9 +814,9 @@
             // 
             this.groupBox1.Controls.Add(this.tableLayoutPanel9);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(4, 371);
+            this.groupBox1.Location = new System.Drawing.Point(4, 366);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(355, 177);
+            this.groupBox1.Size = new System.Drawing.Size(352, 174);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "실행 설정";
@@ -841,16 +843,16 @@
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(349, 153);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(346, 150);
             this.tableLayoutPanel9.TabIndex = 0;
             // 
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblStatus.Location = new System.Drawing.Point(108, 122);
+            this.lblStatus.Location = new System.Drawing.Point(107, 119);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(237, 30);
+            this.lblStatus.Size = new System.Drawing.Size(235, 30);
             this.lblStatus.TabIndex = 19;
             this.lblStatus.Text = "0";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -860,9 +862,9 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label18.Location = new System.Drawing.Point(4, 122);
+            this.label18.Location = new System.Drawing.Point(4, 119);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(97, 30);
+            this.label18.Size = new System.Drawing.Size(96, 30);
             this.label18.TabIndex = 18;
             this.label18.Text = "Status";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -871,9 +873,9 @@
             // 
             this.lblWorkDate.AutoSize = true;
             this.lblWorkDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblWorkDate.Location = new System.Drawing.Point(108, 84);
+            this.lblWorkDate.Location = new System.Drawing.Point(107, 82);
             this.lblWorkDate.Name = "lblWorkDate";
-            this.lblWorkDate.Size = new System.Drawing.Size(237, 37);
+            this.lblWorkDate.Size = new System.Drawing.Size(235, 36);
             this.lblWorkDate.TabIndex = 17;
             this.lblWorkDate.Text = "0";
             this.lblWorkDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -882,9 +884,9 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label17.Location = new System.Drawing.Point(4, 84);
+            this.label17.Location = new System.Drawing.Point(4, 82);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(97, 37);
+            this.label17.Size = new System.Drawing.Size(96, 36);
             this.label17.TabIndex = 16;
             this.label17.Text = "최근\r\n작동시간";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -895,7 +897,7 @@
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Location = new System.Drawing.Point(4, 1);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 44);
+            this.label4.Size = new System.Drawing.Size(96, 43);
             this.label4.TabIndex = 12;
             this.label4.Text = "조회 주기\r\n(ms)";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -903,11 +905,11 @@
             // tbWaitLatency
             // 
             this.tbWaitLatency.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbWaitLatency.Location = new System.Drawing.Point(108, 4);
+            this.tbWaitLatency.Location = new System.Drawing.Point(107, 4);
             this.tbWaitLatency.Multiline = true;
             this.tbWaitLatency.Name = "tbWaitLatency";
             this.tbWaitLatency.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbWaitLatency.Size = new System.Drawing.Size(237, 38);
+            this.tbWaitLatency.Size = new System.Drawing.Size(235, 37);
             this.tbWaitLatency.TabIndex = 7;
             this.tbWaitLatency.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -915,9 +917,9 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label16.Location = new System.Drawing.Point(4, 46);
+            this.label16.Location = new System.Drawing.Point(4, 45);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(97, 37);
+            this.label16.Size = new System.Drawing.Size(96, 36);
             this.label16.TabIndex = 14;
             this.label16.Text = "인식된\r\n항목 수";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -926,9 +928,9 @@
             // 
             this.lblRecogCnt.AutoSize = true;
             this.lblRecogCnt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblRecogCnt.Location = new System.Drawing.Point(108, 46);
+            this.lblRecogCnt.Location = new System.Drawing.Point(107, 45);
             this.lblRecogCnt.Name = "lblRecogCnt";
-            this.lblRecogCnt.Size = new System.Drawing.Size(237, 37);
+            this.lblRecogCnt.Size = new System.Drawing.Size(235, 36);
             this.lblRecogCnt.TabIndex = 15;
             this.lblRecogCnt.Text = "0";
             this.lblRecogCnt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -939,7 +941,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(55, 614);
+            this.groupBox2.Size = new System.Drawing.Size(55, 606);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "도구";
@@ -964,7 +966,7 @@
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(49, 590);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(49, 582);
             this.tableLayoutPanel10.TabIndex = 0;
             // 
             // btnDeleteCompleted
@@ -974,7 +976,7 @@
             this.btnDeleteCompleted.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteCompleted.Location = new System.Drawing.Point(4, 4);
             this.btnDeleteCompleted.Name = "btnDeleteCompleted";
-            this.btnDeleteCompleted.Size = new System.Drawing.Size(41, 110);
+            this.btnDeleteCompleted.Size = new System.Drawing.Size(41, 109);
             this.btnDeleteCompleted.TabIndex = 6;
             this.btnDeleteCompleted.Text = "완료삭제";
             this.btnDeleteCompleted.UseVisualStyleBackColor = true;
@@ -985,9 +987,9 @@
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(4, 121);
+            this.btnSave.Location = new System.Drawing.Point(4, 120);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(41, 110);
+            this.btnSave.Size = new System.Drawing.Size(41, 109);
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "저장";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -998,9 +1000,9 @@
             this.btnLoad.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLoad.FlatAppearance.BorderSize = 0;
             this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoad.Location = new System.Drawing.Point(4, 238);
+            this.btnLoad.Location = new System.Drawing.Point(4, 236);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(41, 110);
+            this.btnLoad.Size = new System.Drawing.Size(41, 109);
             this.btnLoad.TabIndex = 8;
             this.btnLoad.Text = "불러오기";
             this.btnLoad.UseVisualStyleBackColor = true;
@@ -1011,9 +1013,9 @@
             this.btnSetting.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSetting.FlatAppearance.BorderSize = 0;
             this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetting.Location = new System.Drawing.Point(4, 355);
+            this.btnSetting.Location = new System.Drawing.Point(4, 352);
             this.btnSetting.Name = "btnSetting";
-            this.btnSetting.Size = new System.Drawing.Size(41, 110);
+            this.btnSetting.Size = new System.Drawing.Size(41, 109);
             this.btnSetting.TabIndex = 10;
             this.btnSetting.Text = "설정";
             this.btnSetting.UseVisualStyleBackColor = true;
@@ -1026,13 +1028,29 @@
             this.btnDeleteAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteAll.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnDeleteAll.ForeColor = System.Drawing.Color.Red;
-            this.btnDeleteAll.Location = new System.Drawing.Point(4, 472);
+            this.btnDeleteAll.Location = new System.Drawing.Point(4, 468);
             this.btnDeleteAll.Name = "btnDeleteAll";
-            this.btnDeleteAll.Size = new System.Drawing.Size(41, 114);
+            this.btnDeleteAll.Size = new System.Drawing.Size(41, 110);
             this.btnDeleteAll.TabIndex = 9;
             this.btnDeleteAll.Text = "모두삭제";
             this.btnDeleteAll.UseVisualStyleBackColor = true;
             this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
+            // 
+            // tableLayoutPanel11
+            // 
+            this.tableLayoutPanel11.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel11.ColumnCount = 1;
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel11.Controls.Add(this.tableLayoutPanel1, 0, 0);
+            this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            this.tableLayoutPanel11.RowCount = 1;
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(1232, 622);
+            this.tableLayoutPanel11.TabIndex = 1;
             // 
             // frm_CM_Main
             // 
@@ -1040,7 +1058,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1232, 622);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.tableLayoutPanel11);
             this.Font = new System.Drawing.Font("맑은 고딕", 10F);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frm_CM_Main";
@@ -1069,6 +1087,7 @@
             this.tableLayoutPanel9.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel11.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1144,6 +1163,7 @@
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button btnDeleteAll;
         private System.Windows.Forms.Button btnSetting;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
     }
 }
 

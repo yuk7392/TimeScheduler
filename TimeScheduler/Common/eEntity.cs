@@ -83,4 +83,32 @@ namespace TimeScheduler
         }
     }
     #endregion
+
+    #region eChangeLog
+    public class eChangeLog
+    {
+        public string VERSION { get; set }
+        public string UPDDATE { get; set; }
+        public string CHANGELOG { get; set; }
+
+        public eChangeLog()
+        {
+            Clear();
+        }
+
+        public eChangeLog(string pVersion, string pUpdDate, string pChangeLog)
+        {
+            VERSION = pVersion;
+            UPDDATE = pUpdDate;
+            CHANGELOG = pChangeLog;
+        }
+
+        public void Clear()
+        {
+            VERSION = string.Empty;
+            UPDDATE = string.Empty;
+            CHANGELOG = string.Empty;
+        }
+    }
+    #endregion
 }
