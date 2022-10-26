@@ -68,5 +68,15 @@ namespace TimeScheduler
         {
             LoadSetting();
         }
+
+        private void tbCycleTime_TextChanged(object sender, EventArgs e)
+        {
+            int temp = 0;
+
+            if (!int.TryParse(tbCycleTime.Text, out temp))
+                lblCycleTime.Text = "-";
+            else
+                lblCycleTime.Text = ((double)temp / 1000) + "초";
+        }
     }
 }

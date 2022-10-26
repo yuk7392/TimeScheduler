@@ -378,6 +378,7 @@
             this.tbCycleTime.Size = new System.Drawing.Size(264, 41);
             this.tbCycleTime.TabIndex = 5;
             this.tbCycleTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbCycleTime.TextChanged += new System.EventHandler(this.tbCycleTime_TextChanged);
             // 
             // lblCycleTime
             // 
