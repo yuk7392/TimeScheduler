@@ -12,22 +12,22 @@ namespace TimeScheduler
 
         private void btnSave_Click(object sender, System.EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
-
             int temp = 0;
 
             if (!Int32.TryParse(tbCycleTime.Text, out temp))
             {
                 MessageBox.Show("숫자만 입력 하실 수 있습니다.");
-                return;
             }
-
-            cSetting.SetValue(cConstraint.SETTINGS_DOWORK_CYCLE_TIME, tbCycleTime.Text);
-            cSetting.SetValue(cConstraint.SETTINGS_RUN_ON_PROGRAM_START, rbAutoRun_True.Checked ? "true" : "false");
-            cSetting.SetValue(cConstraint.SETTINGS_LAST_UPDATED_DATE, DateTime.Now.ToString(cConstraint.FORMAT_LAST_UPDATED_DATE));
-            cSetting.SetValue(cConstraint.SETTINGS_ASK_ON_CLOSE, rbAskOnClose_True.Checked ? "true" : "false");
-            cSetting.SetValue(cConstraint.SETTINGS_SAVE_ON_DATA_CHANGED, rbSaveOnDataChange_True.Checked ? "true" : "false");
-            this.Close();
+            else
+            {
+                cSetting.SetValue(cConstraint.SETTINGS_DOWORK_CYCLE_TIME, tbCycleTime.Text);
+                cSetting.SetValue(cConstraint.SETTINGS_RUN_ON_PROGRAM_START, rbAutoRun_True.Checked ? "true" : "false");
+                cSetting.SetValue(cConstraint.SETTINGS_LAST_UPDATED_DATE, DateTime.Now.ToString(cConstraint.FORMAT_LAST_UPDATED_DATE));
+                cSetting.SetValue(cConstraint.SETTINGS_ASK_ON_CLOSE, rbAskOnClose_True.Checked ? "true" : "false");
+                cSetting.SetValue(cConstraint.SETTINGS_SAVE_ON_DATA_CHANGED, rbSaveOnDataChange_True.Checked ? "true" : "false");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
 
         }
 
