@@ -61,6 +61,13 @@ namespace TimeScheduler
         /// 실행중인 exe 이름
         /// </summary>
         public static string UPDATE_APPLICATION_EXE_NAME = Path.GetFileName(UPDATE_APPLICATION_LOCATION);
+        /// <summary>
+        /// 기존 실행파일 교체시 확장자명
+        /// </summary>
         public static string OLD_FILE_EXTENSION = ".TSOLD";
+        /// <summary>
+        /// 로그 저장 폴더
+        /// </summary>
+        public static string LOG_LOCATION = @"C:\TimeScheduler\Log";
     }
 }
