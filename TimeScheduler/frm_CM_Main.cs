@@ -37,6 +37,12 @@ namespace TimeScheduler
             this.Text = "Time Scheduler (" + Assembly.GetExecutingAssembly().GetName().Version + ")";
 
             cCommon.RemoveUpdateFile();
+
+            if (cCommon.IsAlreadyRunning())
+            {
+                MessageBox.Show("프로그램이 이미 실행중입니다. 프로그램을 종료합니다.");
+                Environment.Exit(0);
+            }
         }
 
         public void LoadSetting()
@@ -159,12 +165,6 @@ namespace TimeScheduler
         private void frm_CM_Main_Load(object sender, EventArgs e)
         {
             LoadSetting();
-
-            if (cCommon.IsAlreadyRunning())
-            {
-                MessageBox.Show("프로그램이 이미 실행중입니다. 프로그램을 종료합니다.");
-                this.Close();
-            }
 
             cCommon.LoadData(dgvList);
 
@@ -736,7 +736,7 @@ namespace TimeScheduler
             }
 
             Process.Start(cConstraint.UPDATE_APPLICATION_LOCATION);
-            this.Close();
+            Environment.Exit(0);
         }
     }
 }
