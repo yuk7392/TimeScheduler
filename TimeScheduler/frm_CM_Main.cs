@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
@@ -165,10 +166,9 @@ namespace TimeScheduler
                 this.Close();
             }
 
-            CheckUpdate();
-
             cCommon.LoadData(dgvList);
 
+            CheckUpdate();
 
             if (cAutoExecute)
                 btnToggleDaemon.PerformClick();
@@ -717,7 +717,12 @@ namespace TimeScheduler
                 case 1:
                 case -1:
                     if (MessageBox.Show("업데이트가 존재합니다. 신규버전을 설치하시겠습니까?", string.Empty, MessageBoxButtons.YesNo) != DialogResult.Yes)
+                    {
+                        if (File.Exists(updateFilePath))
+                            File.Delete(updateFilePath);
+
                         return;
+                    }
 
                     File.Move(cConstraint.UPDATE_APPLICATION_LOCATION, cConstraint.UPDATE_APPLICATION_LOCATION + cConstraint.OLD_FILE_EXTENSION);
                     File.Move(updateFilePath, cConstraint.UPDATE_APPLICATION_LOCATION);
@@ -730,6 +735,7 @@ namespace TimeScheduler
                     return;
             }
 
+            Process.Start(cConstraint.UPDATE_APPLICATION_LOCATION);
             this.Close();
         }
     }
