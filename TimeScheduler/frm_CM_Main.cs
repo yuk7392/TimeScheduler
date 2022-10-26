@@ -157,6 +157,8 @@ namespace TimeScheduler
 
         private void frm_CM_Main_Load(object sender, EventArgs e)
         {
+            LoadSetting();
+
             if (cCommon.IsAlreadyRunning())
             {
                 MessageBox.Show("프로그램이 이미 실행중입니다. 프로그램을 종료합니다.");
@@ -167,7 +169,6 @@ namespace TimeScheduler
 
             cCommon.LoadData(dgvList);
 
-            LoadSetting();
 
             if (cAutoExecute)
                 btnToggleDaemon.PerformClick();
