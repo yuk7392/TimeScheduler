@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Net;
-using System.Threading.Tasks;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace TimeScheduler
@@ -30,24 +26,37 @@ namespace TimeScheduler
             tbLog.ScrollToCaret();
         }
 
-        private bool GetChangeLog(out List<eChangeLog> pList)
+        private bool GetChangeLog()
         {
-            pList = new List<eChangeLog>();
+            cChangeLogList = new List<eChangeLog>();
 
             if (!cCommon.InternetConnected())
                 return false;
 
             WebClient webClient = new WebClient();
 
-            string logStr = webClient.DownloadString(new Uri(cConstraint.CHANGELOG_SERVER_URL));
+            string logStr = Regex.Replace(webClient.DownloadString(new Uri(cConstraint.CHANGELOG_SERVER_URL)), @"\r\n?|\n", Environment.NewLine);
 
             string[] logStr_split = logStr.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
 
+            eChangeLog log = new eChangeLog();
+            bool inForm = false;
+            StringBuilder sb = new StringBuilder();
+
             foreach (string s in logStr_split)
             {
-                eChangeLog log = new eChangeLog();
-                bool inForm = false;
-                StringBuilder sb = new StringBuilder();
+                if (s.Trim().StartsWith("#") && s.Trim().Length == 1)
+                {
+                    log.CHANGELOG = sb.ToString();
+
+                    inForm = false;
+                    cChangeLogList.Add(log);
+                    log = new eChangeLog();
+                    sb.Clear();
+                }
+
+                if (!s.Trim().StartsWith("$") && inForm)
+                    sb.Append(s + Environment.NewLine);
 
                 // Beginning Point
                 if (s.Trim().StartsWith("#") && s.Trim().Length > 1)
@@ -58,17 +67,6 @@ namespace TimeScheduler
 
                 if (s.Trim().StartsWith("$") && inForm)
                     log.UPDDATE = s.Replace("$", string.Empty).Trim();
-
-                if (inForm)
-                    sb.Append(s + Environment.NewLine);
-
-                if (s.Trim().StartsWith("#") && s.Trim().Length == 1)
-                {
-                    inForm = false;
-                    pList.Add(log);
-                    log.Clear();
-                    sb.Clear();
-                }
             }
 
             return true;
@@ -77,13 +75,13 @@ namespace TimeScheduler
 
         private void frm_CM_ChangeLog_Load(object sender, EventArgs e)
         {
-            if (!GetChangeLog(out cChangeLogList))
+            if (!GetChangeLog())
             {
                 AppendLog("인터넷에 연결되어 있지 않습니다.");
             }
             else
             {
-                AppendLog(cChangeLogList.Count+"개의 변경사항을 불러왔습니다 : ");
+                AppendLog(cChangeLogList.Count + "개의 변경사항을 불러왔습니다.");
 
                 lbVersion.Items.Clear();
 
@@ -98,6 +96,22 @@ namespace TimeScheduler
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void lbVersion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbVersion.SelectedIndex == -1)
+                return;
+
+            foreach (eChangeLog l in cChangeLogList)
+            {
+                if (l.VERSION.Equals(lbVersion.Items[lbVersion.SelectedIndex].ToString()))
+                {
+                    tbVersion.Text = l.VERSION;
+                    tbUpdDate.Text = l.UPDDATE;
+                    tbChangeLog.Text = l.CHANGELOG;
+                }
+            }
         }
     }
 }

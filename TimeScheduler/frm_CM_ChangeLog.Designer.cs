@@ -95,6 +95,7 @@
             this.lbVersion.Name = "lbVersion";
             this.lbVersion.Size = new System.Drawing.Size(201, 555);
             this.lbVersion.TabIndex = 0;
+            this.lbVersion.SelectedIndexChanged += new System.EventHandler(this.lbVersion_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -187,6 +188,7 @@
             this.tbVersion.ReadOnly = true;
             this.tbVersion.Size = new System.Drawing.Size(135, 41);
             this.tbVersion.TabIndex = 3;
+            this.tbVersion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tbUpdDate
             // 
@@ -197,6 +199,7 @@
             this.tbUpdDate.ReadOnly = true;
             this.tbUpdDate.Size = new System.Drawing.Size(137, 41);
             this.tbUpdDate.TabIndex = 4;
+            this.tbUpdDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tbChangeLog
             // 
