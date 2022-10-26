@@ -49,6 +49,12 @@
     <Compile Include="Common\cConstraint.cs" />
     <Compile Include="Common\cSetting.cs" />
     <Compile Include="Common\eEntity.cs" />
+    <Compile Include="frm_CM_Download.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_CM_Download.Designer.cs">
+      <DependentUpon>frm_CM_Download.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_CM_HMPicker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frm_CM_Download.resx">
+      <DependentUpon>frm_CM_Download.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_CM_HMPicker.resx">
       <DependentUpon>frm_CM_HMPicker.cs</DependentUpon>
     </EmbeddedResource>

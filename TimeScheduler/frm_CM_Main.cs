@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
@@ -33,6 +34,8 @@ namespace TimeScheduler
 
             cWorker.WorkerSupportsCancellation = true;
             this.Text = "Time Scheduler (" + Assembly.GetExecutingAssembly().GetName().Version + ")";
+
+            cCommon.RemoveUpdateFile();
         }
 
         public void LoadSetting()
@@ -154,6 +157,14 @@ namespace TimeScheduler
 
         private void frm_CM_Main_Load(object sender, EventArgs e)
         {
+            if (cCommon.IsAlreadyRunning())
+            {
+                MessageBox.Show("프로그램이 이미 실행중입니다. 프로그램을 종료합니다.");
+                return;
+            }
+
+            CheckUpdate();
+
             cCommon.LoadData(dgvList);
 
             LoadSetting();
@@ -677,6 +688,48 @@ namespace TimeScheduler
         {
             if (dgvList.SelectedRows.Count == 0)
                 gbInform.Text = "정보";
+        }
+
+        private void CheckUpdate()
+        {
+            if (!cCommon.InternetConnected())
+                return;
+
+            string dateToday = DateTime.Now.ToString("yyyyMMdd");
+            string updateFilePath = cConstraint.UPDATE_APPLICATION_DIR_PATH + "/" + "Update_" + dateToday + ".exe";
+
+            List<eDownloadFile> fileList = new List<eDownloadFile>();
+            fileList.Add(new eDownloadFile(updateFilePath, cConstraint.UPDATE_SERVER_EXE_URL));
+
+            frm_CM_Download frm = new frm_CM_Download(fileList);
+            frm.ShowDialog();
+
+            switch (cCommon.CompareVersion(Assembly.GetExecutingAssembly().GetName().Version.ToString(), cCommon.GetFileAssemblyVersion(updateFilePath)))
+            {
+                // 동일
+                case 0:
+                    if (File.Exists(updateFilePath))
+                        File.Delete(updateFilePath);
+                    return;
+
+                // 업데이트 존재
+                case 1:
+                case -1:
+                    if (MessageBox.Show("업데이트가 존재합니다. 신규버전을 설치하시겠습니까?", string.Empty, MessageBoxButtons.YesNo) != DialogResult.Yes)
+                        return;
+
+                    File.Move(cConstraint.UPDATE_APPLICATION_LOCATION, cConstraint.UPDATE_APPLICATION_LOCATION + cConstraint.OLD_FILE_EXTENSION);
+                    File.Move(updateFilePath, cConstraint.UPDATE_APPLICATION_LOCATION);
+
+                    MessageBox.Show("업데이트 적용을 위해 프로그램이 종료됩니다.");
+                    break;
+
+                default:
+                    MessageBox.Show("알 수 없는 코드입니다.");
+                    return;
+            }
+
+            this.Close();
         }
     }
 }

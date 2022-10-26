@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
@@ -469,6 +472,81 @@ namespace TimeScheduler
             return AssemblyName.GetAssemblyName(pPath).Version.ToString();
         }
 
+        #endregion
+
+        #region IsInternetConnected : 인터넷이 연결되었는지 확인한다.
+        /// <summary>
+        /// 인터넷이 연결되었는지 확인한다.
+        /// </summary>
+        /// <returns></returns>
+        public static bool InternetConnected()
+        {
+            const string NCSI_TEST_URL = "http://www.msftncsi.com/ncsi.txt";
+            const string NCSI_TEST_RESULT = "Microsoft NCSI";
+            const string NCSI_DNS = "dns.msftncsi.com";
+            const string NCSI_DNS_IP_ADDRESS = "131.107.255.255";
+
+            try
+            {
+                // Check NCSI test link
+                var webClient = new WebClient();
+                string result = webClient.DownloadString(NCSI_TEST_URL);
+                if (result != NCSI_TEST_RESULT)
+                {
+                    return false;
+                }
+
+                // Check NCSI DNS IP
+                var dnsHost = Dns.GetHostEntry(NCSI_DNS);
+                if (dnsHost.AddressList.Count() < 0 || dnsHost.AddressList[0].ToString() != NCSI_DNS_IP_ADDRESS)
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        #endregion
+
+        #region IsAlreadyRunning : 같은 프로그램이 이미 실행되고 있는지 확인한다.
+        /// <summary>
+        /// 같은 프로그램이 이미 실행되고 있는지 확인한다.
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsAlreadyRunning()
+        {
+            Process[] processes = Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName);
+
+            return (processes.Length > 1);
+        }
+        #endregion
+
+        #region RemoveUpdateFile : 업데이트 후 남은 잔존파일들을 제거한다.
+        /// <summary>
+        /// 업데이트 후 남은 잔존파일들을 제거한다.
+        /// </summary>
+        /// <returns></returns>
+        public static int RemoveUpdateFile()
+        {
+            int cnt = 0;
+
+            DirectoryInfo dirInfo = new DirectoryInfo(cConstraint.UPDATE_APPLICATION_DIR_PATH);
+
+            foreach (FileInfo fi in dirInfo.GetFiles())
+            {
+                if (fi.Exists && fi.Extension.Equals(cConstraint.OLD_FILE_EXTENSION))
+                {
+                    cnt++;
+                    fi.Delete();
+                }
+            }
+
+            return cnt;
+        }
         #endregion
     }
 

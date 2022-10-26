@@ -22,7 +22,7 @@ namespace TimeScheduler
         None
     }
 
-
+    #region eSchedule
     public class eSchedule
     {
         public string NAME { get; set; }
@@ -57,4 +57,30 @@ namespace TimeScheduler
             COMPLETED = false;
         }
     }
+    #endregion
+
+    #region eDownloadFile
+    public class eDownloadFile
+    {
+        public string SAVEPATH { get; set; }
+        public string URL { get; set; }
+
+        public eDownloadFile()
+        {
+            Clear();
+        }
+
+        public eDownloadFile(string pSavePath, string pUrl)
+        {
+            SAVEPATH = pSavePath;
+            URL = pUrl;
+        }
+
+        public void Clear()
+        {
+            SAVEPATH = string.Empty;
+            URL = string.Empty;
+        }
+    }
+    #endregion
 }
