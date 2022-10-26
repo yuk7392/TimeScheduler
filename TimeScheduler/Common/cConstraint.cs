@@ -69,5 +69,6 @@ namespace TimeScheduler
         /// 로그 저장 폴더
         /// </summary>
         public static string LOG_LOCATION = @"C:\TimeScheduler\Log";
+        public static string CHANGELOG_SERVER_URL = @"https://raw.githubusercontent.com/yuk7392/TimeScheduler/master/TimeScheduler/changeLog.txt";
     }
 }

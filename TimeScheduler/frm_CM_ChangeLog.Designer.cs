@@ -235,6 +235,7 @@
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "닫기";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // tbLog
             // 
@@ -261,6 +262,7 @@
             this.Name = "frm_CM_ChangeLog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_CM_ChangeLog";
+            this.Load += new System.EventHandler(this.frm_CM_ChangeLog_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

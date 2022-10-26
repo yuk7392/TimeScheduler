@@ -100,6 +100,7 @@
             this.btnSetting = new System.Windows.Forms.Button();
             this.btnDeleteAll = new System.Windows.Forms.Button();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnChangeLog = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -955,16 +956,18 @@
             this.tableLayoutPanel10.Controls.Add(this.btnSave, 0, 1);
             this.tableLayoutPanel10.Controls.Add(this.btnLoad, 0, 2);
             this.tableLayoutPanel10.Controls.Add(this.btnSetting, 0, 3);
-            this.tableLayoutPanel10.Controls.Add(this.btnDeleteAll, 0, 4);
+            this.tableLayoutPanel10.Controls.Add(this.btnDeleteAll, 0, 5);
+            this.tableLayoutPanel10.Controls.Add(this.btnChangeLog, 0, 4);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 21);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
-            this.tableLayoutPanel10.RowCount = 5;
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel10.RowCount = 6;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel10.Size = new System.Drawing.Size(49, 582);
             this.tableLayoutPanel10.TabIndex = 0;
@@ -976,7 +979,7 @@
             this.btnDeleteCompleted.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteCompleted.Location = new System.Drawing.Point(4, 4);
             this.btnDeleteCompleted.Name = "btnDeleteCompleted";
-            this.btnDeleteCompleted.Size = new System.Drawing.Size(41, 109);
+            this.btnDeleteCompleted.Size = new System.Drawing.Size(41, 89);
             this.btnDeleteCompleted.TabIndex = 6;
             this.btnDeleteCompleted.Text = "완료삭제";
             this.btnDeleteCompleted.UseVisualStyleBackColor = true;
@@ -987,9 +990,9 @@
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(4, 120);
+            this.btnSave.Location = new System.Drawing.Point(4, 100);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(41, 109);
+            this.btnSave.Size = new System.Drawing.Size(41, 89);
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "저장";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -1000,9 +1003,9 @@
             this.btnLoad.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLoad.FlatAppearance.BorderSize = 0;
             this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoad.Location = new System.Drawing.Point(4, 236);
+            this.btnLoad.Location = new System.Drawing.Point(4, 196);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(41, 109);
+            this.btnLoad.Size = new System.Drawing.Size(41, 89);
             this.btnLoad.TabIndex = 8;
             this.btnLoad.Text = "불러오기";
             this.btnLoad.UseVisualStyleBackColor = true;
@@ -1013,9 +1016,9 @@
             this.btnSetting.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSetting.FlatAppearance.BorderSize = 0;
             this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetting.Location = new System.Drawing.Point(4, 352);
+            this.btnSetting.Location = new System.Drawing.Point(4, 292);
             this.btnSetting.Name = "btnSetting";
-            this.btnSetting.Size = new System.Drawing.Size(41, 109);
+            this.btnSetting.Size = new System.Drawing.Size(41, 89);
             this.btnSetting.TabIndex = 10;
             this.btnSetting.Text = "설정";
             this.btnSetting.UseVisualStyleBackColor = true;
@@ -1028,9 +1031,9 @@
             this.btnDeleteAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteAll.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnDeleteAll.ForeColor = System.Drawing.Color.Red;
-            this.btnDeleteAll.Location = new System.Drawing.Point(4, 468);
+            this.btnDeleteAll.Location = new System.Drawing.Point(4, 484);
             this.btnDeleteAll.Name = "btnDeleteAll";
-            this.btnDeleteAll.Size = new System.Drawing.Size(41, 110);
+            this.btnDeleteAll.Size = new System.Drawing.Size(41, 94);
             this.btnDeleteAll.TabIndex = 9;
             this.btnDeleteAll.Text = "모두삭제";
             this.btnDeleteAll.UseVisualStyleBackColor = true;
@@ -1051,6 +1054,19 @@
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel11.Size = new System.Drawing.Size(1232, 622);
             this.tableLayoutPanel11.TabIndex = 1;
+            // 
+            // btnChangeLog
+            // 
+            this.btnChangeLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnChangeLog.FlatAppearance.BorderSize = 0;
+            this.btnChangeLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChangeLog.Location = new System.Drawing.Point(4, 388);
+            this.btnChangeLog.Name = "btnChangeLog";
+            this.btnChangeLog.Size = new System.Drawing.Size(41, 89);
+            this.btnChangeLog.TabIndex = 11;
+            this.btnChangeLog.Text = "변경사항";
+            this.btnChangeLog.UseVisualStyleBackColor = true;
+            this.btnChangeLog.Click += new System.EventHandler(this.btnChangeLog_Click);
             // 
             // frm_CM_Main
             // 
@@ -1164,6 +1180,7 @@
         private System.Windows.Forms.Button btnDeleteAll;
         private System.Windows.Forms.Button btnSetting;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.Button btnChangeLog;
     }
 }
 

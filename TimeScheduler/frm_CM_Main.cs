@@ -738,5 +738,11 @@ namespace TimeScheduler
             Process.Start(cConstraint.UPDATE_APPLICATION_LOCATION);
             Environment.Exit(0);
         }
+
+        private void btnChangeLog_Click(object sender, EventArgs e)
+        {
+            frm_CM_ChangeLog frm = new frm_CM_ChangeLog();
+            frm.ShowDialog();
+        }
     }
 }

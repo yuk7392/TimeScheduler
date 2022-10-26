@@ -87,7 +87,7 @@ namespace TimeScheduler
     #region eChangeLog
     public class eChangeLog
     {
-        public string VERSION { get; set }
+        public string VERSION { get; set; }
         public string UPDDATE { get; set; }
         public string CHANGELOG { get; set; }
 
