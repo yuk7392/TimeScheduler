@@ -160,7 +160,7 @@ namespace TimeScheduler
             if (cCommon.IsAlreadyRunning())
             {
                 MessageBox.Show("프로그램이 이미 실행중입니다. 프로그램을 종료합니다.");
-                return;
+                this.Close();
             }
 
             CheckUpdate();
