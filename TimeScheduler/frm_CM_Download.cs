@@ -16,50 +16,64 @@ namespace TimeScheduler
 
         public frm_CM_Download(List<eDownloadFile> pList)
         {
-            InitializeComponent();
-            cDownloadList = pList;
+            try
+            {
+                InitializeComponent();
+                cDownloadList = pList;
 
-            cCommon.SetSecurityProtocol();
+                cCommon.SetSecurityProtocol();
+            }
+            catch (Exception ex)
+            {
+                cLogWriter.WriteLog(ex);
+            }
         }
 
         private void cWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            int skipCnt = 0;
-            WebClient webClient = new WebClient();
-
-            pgBar.BeginInvoke(new MethodInvoker(delegate { pgBar.Step = 100 / cDownloadList.Count; }));
-
-            AppendText("다운로드 항목 : " + cDownloadList.Count);
-            AppendText("다운로드를 시작합니다.");
-            AppendText(string.Empty);
-
-            foreach (eDownloadFile file in cDownloadList)
+            try
             {
-                if (string.IsNullOrEmpty(file.SAVEPATH) || string.IsNullOrEmpty(file.URL))
+                int skipCnt = 0;
+                WebClient webClient = new WebClient();
+
+                pgBar.BeginInvoke(new MethodInvoker(delegate { pgBar.Step = 100 / cDownloadList.Count; }));
+
+                AppendText("다운로드 항목 : " + cDownloadList.Count);
+                AppendText("다운로드를 시작합니다.");
+                AppendText(string.Empty);
+
+                foreach (eDownloadFile file in cDownloadList)
                 {
-                    skipCnt++;
+                    if (string.IsNullOrEmpty(file.SAVEPATH) || string.IsNullOrEmpty(file.URL))
+                    {
+                        skipCnt++;
+                        pgBar.BeginInvoke(new MethodInvoker(delegate { pgBar.PerformStep(); }));
+                        continue;
+                    }
+
+                    AppendText("다운로드 중 : " + Path.GetFileName(file.SAVEPATH) + " ", false);
+
+                    if (File.Exists(file.SAVEPATH))
+                        File.Delete(file.SAVEPATH);
+
+                    webClient.DownloadFile(new Uri(file.URL), file.SAVEPATH);
+                    AppendText("[완료]");
                     pgBar.BeginInvoke(new MethodInvoker(delegate { pgBar.PerformStep(); }));
-                    continue;
                 }
 
-                AppendText("다운로드 중 : " + Path.GetFileName(file.SAVEPATH) + " ", false);
+                AppendText(string.Empty);
 
-                if (File.Exists(file.SAVEPATH))
-                    File.Delete(file.SAVEPATH);
+                if (skipCnt > 0)
+                    AppendText(cDownloadList.Count + "개의 항목 중 " + skipCnt + "개의 항목을 건너뛰었습니다.");
 
-                webClient.DownloadFile(new Uri(file.URL), file.SAVEPATH);
-                AppendText("[완료]");
                 pgBar.BeginInvoke(new MethodInvoker(delegate { pgBar.PerformStep(); }));
+
+                AppendText("프로그램을 종료합니다.", false);
             }
-
-            AppendText(string.Empty);
-
-            if (skipCnt > 0)
-                AppendText(cDownloadList.Count + "개의 항목 중 " + skipCnt + "개의 항목을 건너뛰었습니다.");
-
-            pgBar.BeginInvoke(new MethodInvoker(delegate { pgBar.PerformStep(); }));
-
-            AppendText("프로그램을 종료합니다.", false);
+            catch (Exception ex)
+            {
+                cLogWriter.WriteLog(ex);
+            }
         }
 
         private void cWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -68,46 +82,81 @@ namespace TimeScheduler
         }
         private void cWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            cWorker_SubEvent(false);
-            this.BeginInvoke(new MethodInvoker(delegate { this.Close(); }));
+            try
+            {
+                cWorker_SubEvent(false);
+                this.BeginInvoke(new MethodInvoker(delegate { this.Close(); }));
+            }
+            catch (Exception ex)
+            {
+                cLogWriter.WriteLog(ex);
+            }
         }
 
         private void AppendText(string pString, bool pChngLine = true)
         {
-            tb.BeginInvoke(new MethodInvoker(delegate { tb.AppendText("[" + DateTime.Now.ToString(cConstraint.FORMAT_LAST_UPDATED_DATE) + "] " + pString + (pChngLine ? Environment.NewLine : string.Empty)); }));
+            try
+            {
+                tb.BeginInvoke(new MethodInvoker(delegate { tb.AppendText("[" + DateTime.Now.ToString(cConstraint.FORMAT_LAST_UPDATED_DATE) + "] " + pString + (pChngLine ? Environment.NewLine : string.Empty)); }));
+            }
+            catch (Exception ex)
+            {
+                cLogWriter.WriteLog(ex);
+            }
         }
 
         private void cWorker_SubEvent(bool pSubFlag)
         {
-            if (pSubFlag)
+            try
             {
-                cWorker.DoWork += cWorker_DoWork;
-                cWorker.ProgressChanged += cWorker_ProgressChanged;
-                cWorker.RunWorkerCompleted += cWorker_RunWorkerCompleted;
+                if (pSubFlag)
+                {
+                    cWorker.DoWork += cWorker_DoWork;
+                    cWorker.ProgressChanged += cWorker_ProgressChanged;
+                    cWorker.RunWorkerCompleted += cWorker_RunWorkerCompleted;
+                }
+                else
+                {
+                    cWorker.DoWork -= cWorker_DoWork;
+                    cWorker.ProgressChanged -= cWorker_ProgressChanged;
+                    cWorker.RunWorkerCompleted -= cWorker_RunWorkerCompleted;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                cWorker.DoWork -= cWorker_DoWork;
-                cWorker.ProgressChanged -= cWorker_ProgressChanged;
-                cWorker.RunWorkerCompleted -= cWorker_RunWorkerCompleted;
+                cLogWriter.WriteLog(ex);
             }
         }
 
         private void tb_TextChanged(object sender, EventArgs e)
         {
-            tb.ScrollToCaret();
+            try
+            {
+                tb.ScrollToCaret();
+            }
+            catch (Exception ex)
+            {
+                cLogWriter.WriteLog(ex);
+            }
         }
 
         private void frm_CM_Download_Load(object sender, EventArgs e)
         {
-            cWorker.WorkerSupportsCancellation = true;
+            try
+            {
+                cWorker.WorkerSupportsCancellation = true;
 
-            cWorker_SubEvent(true);
+                cWorker_SubEvent(true);
 
-            if (cDownloadList.Count == 0)
-                this.Close();
-            else
-                cWorker.RunWorkerAsync();
+                if (cDownloadList.Count == 0)
+                    this.Close();
+                else
+                    cWorker.RunWorkerAsync();
+            }
+            catch (Exception ex)
+            {
+                cLogWriter.WriteLog(ex);
+            }
         }
     }
 }

@@ -35,26 +35,47 @@ namespace TimeScheduler
 
         public eSchedule()
         {
-            Clear();
+            try
+            {
+                Clear();
+            }
+            catch (Exception ex)
+            {
+                cLogWriter.WriteLog(ex);
+            }
         }
 
         public eSchedule(string pName, ScheduleCycleType pCycle, string pDate, List<DayOfWeek> pDayOfWeek, string pTime, string pMinute, bool pCompleted = false)
         {
-            NAME = pName.ToUpper();
-            CYCLE = pCycle;
-            DATE = pDate;
-            DAYOFWEEK = pDayOfWeek;
-            TIME = pTime;
-            MINUTE = pMinute;
-            COMPLETED = pCompleted;
+            try
+            {
+                NAME = pName.ToUpper();
+                CYCLE = pCycle;
+                DATE = pDate;
+                DAYOFWEEK = pDayOfWeek;
+                TIME = pTime;
+                MINUTE = pMinute;
+                COMPLETED = pCompleted;
+            }
+            catch (Exception ex)
+            {
+                cLogWriter.WriteLog(ex);
+            }
         }
 
         public void Clear()
         {
-            NAME = TIME = MINUTE = DATE = string.Empty;
-            CYCLE = ScheduleCycleType.None;
-            DAYOFWEEK.Clear();
-            COMPLETED = false;
+            try
+            {
+                NAME = TIME = MINUTE = DATE = string.Empty;
+                CYCLE = ScheduleCycleType.None;
+                DAYOFWEEK.Clear();
+                COMPLETED = false;
+            }
+            catch (Exception ex)
+            {
+                cLogWriter.WriteLog(ex);
+            }
         }
     }
     #endregion
@@ -67,19 +88,40 @@ namespace TimeScheduler
 
         public eDownloadFile()
         {
-            Clear();
+            try
+            {
+                Clear();
+            }
+            catch (Exception ex)
+            {
+                cLogWriter.WriteLog(ex);
+            }
         }
 
         public eDownloadFile(string pSavePath, string pUrl)
         {
-            SAVEPATH = pSavePath;
-            URL = pUrl;
+            try
+            {
+                SAVEPATH = pSavePath;
+                URL = pUrl;
+            }
+            catch (Exception ex)
+            {
+                cLogWriter.WriteLog(ex);
+            }
         }
 
         public void Clear()
         {
-            SAVEPATH = string.Empty;
-            URL = string.Empty;
+            try
+            {
+                SAVEPATH = string.Empty;
+                URL = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                cLogWriter.WriteLog(ex);
+            }
         }
     }
     #endregion
@@ -93,21 +135,42 @@ namespace TimeScheduler
 
         public eChangeLog()
         {
-            Clear();
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                cLogWriter.WriteLog(ex);
+            }
         }
 
         public eChangeLog(string pVersion, string pUpdDate, string pChangeLog)
         {
-            VERSION = pVersion;
-            UPDDATE = pUpdDate;
-            CHANGELOG = pChangeLog;
+            try
+            {
+                VERSION = pVersion;
+                UPDDATE = pUpdDate;
+                CHANGELOG = pChangeLog;
+            }
+            catch (Exception ex)
+            {
+                cLogWriter.WriteLog(ex);
+            }
         }
 
         public void Clear()
         {
-            VERSION = string.Empty;
-            UPDDATE = string.Empty;
-            CHANGELOG = string.Empty;
+            try
+            {
+                VERSION = string.Empty;
+                UPDDATE = string.Empty;
+                CHANGELOG = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                cLogWriter.WriteLog(ex);
+            }
         }
     }
     #endregion
