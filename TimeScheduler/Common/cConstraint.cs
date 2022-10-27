@@ -6,6 +6,10 @@ namespace TimeScheduler
     public class cConstraint
     {
         /// <summary>
+        /// 실행중인 프로그램의 버전
+        /// </summary>
+        public static string APPLICATION_CURRENT_VERSION = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        /// <summary>
         /// CSV 저장장소
         /// </summary>
         public static string CSV_LOCATION = @"C:\TimeScheduler";

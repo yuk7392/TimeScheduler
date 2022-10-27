@@ -30,19 +30,23 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.lbVersion = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbVersion = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbVersion = new System.Windows.Forms.TextBox();
             this.tbUpdDate = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbVersion = new System.Windows.Forms.TextBox();
             this.tbChangeLog = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.btnClose = new System.Windows.Forms.Button();
             this.tbLog = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbSort = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -50,6 +54,8 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -84,22 +90,9 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(713, 587);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // lbVersion
-            // 
-            this.lbVersion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbVersion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbVersion.FormattingEnabled = true;
-            this.lbVersion.HorizontalScrollbar = true;
-            this.lbVersion.ItemHeight = 17;
-            this.lbVersion.Location = new System.Drawing.Point(3, 21);
-            this.lbVersion.Name = "lbVersion";
-            this.lbVersion.Size = new System.Drawing.Size(201, 555);
-            this.lbVersion.TabIndex = 0;
-            this.lbVersion.SelectedIndexChanged += new System.EventHandler(this.lbVersion_SelectedIndexChanged);
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lbVersion);
+            this.groupBox1.Controls.Add(this.tableLayoutPanel6);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(4, 4);
             this.groupBox1.Name = "groupBox1";
@@ -107,6 +100,19 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "버전목록";
+            // 
+            // lbVersion
+            // 
+            this.lbVersion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbVersion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbVersion.FormattingEnabled = true;
+            this.lbVersion.HorizontalScrollbar = true;
+            this.lbVersion.ItemHeight = 17;
+            this.lbVersion.Location = new System.Drawing.Point(3, 58);
+            this.lbVersion.Name = "lbVersion";
+            this.lbVersion.Size = new System.Drawing.Size(195, 494);
+            this.lbVersion.TabIndex = 0;
+            this.lbVersion.SelectedIndexChanged += new System.EventHandler(this.lbVersion_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -157,16 +163,16 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(477, 49);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
-            // label1
+            // tbUpdDate
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(4, 1);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 47);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "버전";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tbUpdDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbUpdDate.Location = new System.Drawing.Point(336, 4);
+            this.tbUpdDate.Multiline = true;
+            this.tbUpdDate.Name = "tbUpdDate";
+            this.tbUpdDate.ReadOnly = true;
+            this.tbUpdDate.Size = new System.Drawing.Size(137, 41);
+            this.tbUpdDate.TabIndex = 4;
+            this.tbUpdDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -179,6 +185,17 @@
             this.label3.Text = "업데이트\r\n날짜";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(4, 1);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 47);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "버전";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // tbVersion
             // 
             this.tbVersion.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -189,17 +206,6 @@
             this.tbVersion.Size = new System.Drawing.Size(135, 41);
             this.tbVersion.TabIndex = 3;
             this.tbVersion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tbUpdDate
-            // 
-            this.tbUpdDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbUpdDate.Location = new System.Drawing.Point(336, 4);
-            this.tbUpdDate.Multiline = true;
-            this.tbUpdDate.Name = "tbUpdDate";
-            this.tbUpdDate.ReadOnly = true;
-            this.tbUpdDate.Size = new System.Drawing.Size(137, 41);
-            this.tbUpdDate.TabIndex = 4;
-            this.tbUpdDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tbChangeLog
             // 
@@ -252,6 +258,61 @@
             this.tbLog.TabIndex = 1;
             this.tbLog.TextChanged += new System.EventHandler(this.tbLog_TextChanged);
             // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 1;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.Controls.Add(this.lbVersion, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 0, 0);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 21);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 2;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(201, 555);
+            this.tableLayoutPanel6.TabIndex = 1;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel7.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.cbSort, 1, 0);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(195, 49);
+            this.tableLayoutPanel7.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(4, 1);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 47);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "정렬";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cbSort
+            // 
+            this.cbSort.AutoSize = true;
+            this.cbSort.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbSort.Location = new System.Drawing.Point(62, 4);
+            this.cbSort.Name = "cbSort";
+            this.cbSort.Size = new System.Drawing.Size(129, 41);
+            this.cbSort.TabIndex = 1;
+            this.cbSort.Text = "내림차순";
+            this.cbSort.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cbSort.UseVisualStyleBackColor = true;
+            this.cbSort.CheckedChanged += new System.EventHandler(this.cbSort_CheckedChanged);
+            // 
             // frm_CM_ChangeLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -276,6 +337,9 @@
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -297,5 +361,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.TextBox tbLog;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox cbSort;
     }
 }

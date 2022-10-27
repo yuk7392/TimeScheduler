@@ -33,6 +33,8 @@ namespace TimeScheduler
             if (!cCommon.InternetConnected())
                 return false;
 
+            cCommon.SetSecurityProtocol();
+
             WebClient webClient = new WebClient();
 
             string logStr = Regex.Replace(webClient.DownloadString(new Uri(cConstraint.CHANGELOG_SERVER_URL)), @"\r\n?|\n", Environment.NewLine);
@@ -83,12 +85,18 @@ namespace TimeScheduler
             {
                 AppendLog(cChangeLogList.Count + "개의 변경사항을 불러왔습니다.");
 
+                cChangeLogList.Reverse();
+
                 lbVersion.Items.Clear();
 
                 foreach (eChangeLog l in cChangeLogList)
                 {
                     lbVersion.Items.Add(l.VERSION);
+
+                    if (l.VERSION.Equals(cConstraint.APPLICATION_CURRENT_VERSION))
+                        lbVersion.SetSelected(lbVersion.Items.IndexOf(l.VERSION), true);
                 }
+
             }
 
         }
@@ -112,6 +120,22 @@ namespace TimeScheduler
                     tbChangeLog.Text = l.CHANGELOG;
                 }
             }
+        }
+
+        private void cbSort_CheckedChanged(object sender, EventArgs e)
+        {
+            cbSort.Text = cbSort.Checked ? "오름차순" : "내림차순";
+
+            ReverseListBox();
+        }
+
+        private void ReverseListBox()
+        {
+            cChangeLogList.Reverse();
+            lbVersion.Items.Clear();
+
+            foreach (eChangeLog l in cChangeLogList)
+                lbVersion.Items.Add(l.VERSION);
         }
     }
 }

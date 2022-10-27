@@ -18,6 +18,8 @@ namespace TimeScheduler
         {
             InitializeComponent();
             cDownloadList = pList;
+
+            cCommon.SetSecurityProtocol();
         }
 
         private void cWorker_DoWork(object sender, DoWorkEventArgs e)

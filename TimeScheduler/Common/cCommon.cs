@@ -548,6 +548,16 @@ namespace TimeScheduler
             return cnt;
         }
         #endregion
+
+        #region SetSecurityProtocol : SecurityProtocol를 지정한다.
+        /// <summary>
+        /// SecurityProtocol를 지정한다.
+        /// </summary>
+        public static void SetSecurityProtocol()
+        {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+        }
+        #endregion
     }
 
     public static class cCommonExtension

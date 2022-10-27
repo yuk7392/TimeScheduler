@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -34,7 +33,7 @@ namespace TimeScheduler
             InitializeComponent();
 
             cWorker.WorkerSupportsCancellation = true;
-            this.Text = "Time Scheduler (" + Assembly.GetExecutingAssembly().GetName().Version + ")";
+            this.Text = "Time Scheduler (" + cConstraint.APPLICATION_CURRENT_VERSION + ")";
 
             cCommon.RemoveUpdateFile();
 
@@ -705,7 +704,7 @@ namespace TimeScheduler
             frm_CM_Download frm = new frm_CM_Download(fileList);
             frm.ShowDialog();
 
-            switch (cCommon.CompareVersion(Assembly.GetExecutingAssembly().GetName().Version.ToString(), cCommon.GetFileAssemblyVersion(updateFilePath)))
+            switch (cCommon.CompareVersion(cConstraint.APPLICATION_CURRENT_VERSION, cCommon.GetFileAssemblyVersion(updateFilePath)))
             {
                 // 동일
                 case 0:
