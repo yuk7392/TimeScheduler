@@ -176,9 +176,23 @@ namespace TimeScheduler
         {
             try
             {
+                string verTemp = string.Empty;
+
                 cbSort.Text = cbSort.Checked ? "오름차순" : "내림차순";
 
+                if (lbVersion.SelectedIndex != -1)
+                    verTemp = lbVersion.Items[lbVersion.SelectedIndex].ToString();
+
                 ReverseListBox();
+
+                if (string.IsNullOrEmpty(verTemp))
+                    return;
+
+                for (int i = 0; i < lbVersion.Items.Count; i++)
+                {
+                    if (lbVersion.Items[i].Equals(verTemp))
+                        lbVersion.SetSelected(i, true);
+                }
             }
             catch (Exception ex)
             {

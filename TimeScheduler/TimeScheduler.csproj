@@ -51,6 +51,7 @@
     <Compile Include="Common\cCommon.cs" />
     <Compile Include="Common\cConstraint.cs" />
     <Compile Include="Common\cLogWriter.cs" />
+    <Compile Include="Common\cMessageBox.cs" />
     <Compile Include="Common\cSetting.cs" />
     <Compile Include="Common\eEntity.cs" />
     <Compile Include="frm_CM_ChangeLog.cs">

@@ -41,7 +41,7 @@ namespace TimeScheduler
 
                 if (cCommon.IsAlreadyRunning())
                 {
-                    MessageBox.Show("프로그램이 이미 실행중입니다. 프로그램을 종료합니다.");
+                    cMessageBox.Inform("프로그램이 이미 실행중입니다. 프로그램을 종료합니다.");
                     Environment.Exit(0);
                 }
             }
@@ -488,7 +488,7 @@ namespace TimeScheduler
 
                 if (cWorker.IsBusy)
                 {
-                    MessageBox.Show("실행중에는 해당기능을 사용하실 수 없습니다.");
+                    cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
                     return;
                 }
 
@@ -499,7 +499,7 @@ namespace TimeScheduler
                 if (cSaveOnDataChange)
                 {
                     cCommon.SaveData(dgvList);
-                    MessageBox.Show("저장되었습니다.");
+                    cMessageBox.Inform("저장되었습니다.");
                 }
             }
             catch (Exception ex)
@@ -515,11 +515,11 @@ namespace TimeScheduler
                 if (cAskOnClose)
                 {
 
-                    if (MessageBox.Show("내용을 저장하시겠습니까?", String.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
+                    if (cMessageBox.Question("내용을 저장하시겠습니까?", "알림", MessageBoxButtons.OKCancel) != DialogResult.OK)
                         return;
 
                     cCommon.SaveData(dgvList);
-                    MessageBox.Show("저장되었습니다.");
+                    cMessageBox.Inform("저장되었습니다.");
                 }
             }
             catch (Exception ex)
@@ -537,7 +537,7 @@ namespace TimeScheduler
 
                 if (cWorker.IsBusy)
                 {
-                    MessageBox.Show("실행중에는 해당기능을 사용하실 수 없습니다.");
+                    cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
                     return;
                 }
 
@@ -553,13 +553,13 @@ namespace TimeScheduler
                     if (cSaveOnDataChange)
                     {
                         cCommon.SaveData(dgvList);
-                        MessageBox.Show("저장되었습니다.");
+                        cMessageBox.Inform("저장되었습니다.");
                     }
                 }
                 else
                 {
 
-                    MessageBox.Show("중복된 이름이 존재합니다 : " + tbScheduleName.Text);
+                    cMessageBox.Error("중복된 이름이 존재합니다 : " + tbScheduleName.Text);
                 }
             }
             catch (Exception ex)
@@ -574,19 +574,19 @@ namespace TimeScheduler
             {
                 if (string.IsNullOrEmpty(tbScheduleName.Text))
                 {
-                    MessageBox.Show("이름은 빈칸일 수 없습니다.");
+                    cMessageBox.Error("이름은 빈칸일 수 없습니다.");
                     return false;
                 }
 
                 if (string.IsNullOrEmpty(tbScheduleDate.Text) && rbSchedule_Once.Checked)
                 {
-                    MessageBox.Show("날짜는 빈칸일 수 없습니다.");
+                    cMessageBox.Error("날짜는 빈칸일 수 없습니다.");
                     return false;
                 }
 
                 if (!cCommon.IsDate(tbScheduleDate.Text) && rbSchedule_Once.Checked)
                 {
-                    MessageBox.Show("올바른 날짜 형식이 아닙니다. (" + DateTime.Today.ToString("yyyyMMdd") + " 형식으로 작성해주세요.)");
+                    cMessageBox.Error("올바른 날짜 형식이 아닙니다. (" + DateTime.Today.ToString("yyyyMMdd") + " 형식으로 작성해주세요.)");
                     return false;
                 }
 
@@ -608,7 +608,7 @@ namespace TimeScheduler
 
                 if (cWorker.IsBusy)
                 {
-                    MessageBox.Show("실행중에는 해당기능을 사용하실 수 없습니다.");
+                    cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
                     return;
                 }
 
@@ -619,7 +619,7 @@ namespace TimeScheduler
                 if (cSaveOnDataChange)
                 {
                     cCommon.SaveData(dgvList);
-                    MessageBox.Show("저장되었습니다.");
+                    cMessageBox.Inform("저장되었습니다.");
                 }
             }
             catch (Exception ex)
@@ -747,7 +747,7 @@ namespace TimeScheduler
             {
                 this.BeginInvoke(new MethodInvoker(delegate { this.Show(); this.WindowState = FormWindowState.Normal; }));
 
-                MessageBox.Show(pContext, "알림", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
+                cMessageBox.Show(pContext, "알림", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
             }
             catch (Exception ex)
             {
@@ -761,19 +761,19 @@ namespace TimeScheduler
             {
                 if (cWorker.IsBusy)
                 {
-                    MessageBox.Show("실행중에는 해당기능을 사용하실 수 없습니다.");
+                    cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
                     return;
                 }
 
-                if (MessageBox.Show("완료항목들을 삭제하시겠습니까?" + Environment.NewLine + "(주기가 Every인 항목은 삭제되지 않습니다.)", String.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
+                if (cMessageBox.Question("완료항목들을 삭제하시겠습니까?" + Environment.NewLine + "(주기가 Every인 항목은 삭제되지 않습니다.)", "알림", MessageBoxButtons.OKCancel) != DialogResult.OK)
                     return;
 
-                MessageBox.Show(cCommon.RemoveCompletedRow(dgvList) + "개의 항목이 삭제되었습니다.");
+                cMessageBox.Inform(cCommon.RemoveCompletedRow(dgvList) + "개의 항목이 삭제되었습니다.");
 
                 if (cSaveOnDataChange)
                 {
                     cCommon.SaveData(dgvList);
-                    MessageBox.Show("저장되었습니다.");
+                    cMessageBox.Inform("저장되었습니다.");
                 }
             }
             catch (Exception ex)
@@ -788,16 +788,16 @@ namespace TimeScheduler
             {
                 if (cWorker.IsBusy)
                 {
-                    MessageBox.Show("실행중에는 해당기능을 사용하실 수 없습니다.");
+                    cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
                     return;
                 }
 
-                if (MessageBox.Show("모든항목들을 저장하시겠습니까?", String.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
+                if (cMessageBox.Question("모든항목들을 저장하시겠습니까?", "알림", MessageBoxButtons.OKCancel) != DialogResult.OK)
                     return;
 
                 cCommon.SaveData(dgvList);
 
-                MessageBox.Show("저장되었습니다.");
+                cMessageBox.Inform("저장되었습니다.");
             }
             catch (Exception ex)
             {
@@ -811,17 +811,17 @@ namespace TimeScheduler
             {
                 if (cWorker.IsBusy)
                 {
-                    MessageBox.Show("실행중에는 해당기능을 사용하실 수 없습니다.");
+                    cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
                     return;
                 }
 
-                if (MessageBox.Show("모든항목들을 불러오시겠습니까?" + Environment.NewLine + "(저장하지 않은 항목은 모두 삭제됩니다.)", String.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
+                if (cMessageBox.Question("모든항목들을 불러오시겠습니까?" + Environment.NewLine + "(저장하지 않은 항목은 모두 삭제됩니다.)", "알림", MessageBoxButtons.OKCancel) != DialogResult.OK)
                     return;
 
                 dgvList.Rows.Clear();
                 cCommon.LoadData(dgvList);
 
-                MessageBox.Show("저장된 데이터를 불러왔습니다.");
+                cMessageBox.Inform("저장된 데이터를 불러왔습니다.");
             }
             catch (Exception ex)
             {
@@ -835,11 +835,11 @@ namespace TimeScheduler
             {
                 if (cWorker.IsBusy)
                 {
-                    MessageBox.Show("실행중에는 해당기능을 사용하실 수 없습니다.");
+                    cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
                     return;
                 }
 
-                if (MessageBox.Show("모든항목들을 삭제하시겠습니까?" + Environment.NewLine + "(화면에 표시된 데이터 또한 삭제됩니다.)", String.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
+                if (cMessageBox.Question("모든항목들을 삭제하시겠습니까?" + Environment.NewLine + "(화면에 표시된 데이터 또한 삭제됩니다.)", "알림", MessageBoxButtons.OKCancel) != DialogResult.OK)
                     return;
 
                 cCommon.ResetCsv();
@@ -848,7 +848,7 @@ namespace TimeScheduler
                 ClearInformControls();
                 ClearRunConfigControls();
 
-                MessageBox.Show("삭제되었습니다.");
+                cMessageBox.Inform("삭제되었습니다.");
             }
             catch (Exception ex)
             {
@@ -895,7 +895,7 @@ namespace TimeScheduler
             {
                 if (cWorker.IsBusy)
                 {
-                    MessageBox.Show("실행중에는 해당기능을 사용하실 수 없습니다.");
+                    cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
                     return;
                 }
 
@@ -951,7 +951,7 @@ namespace TimeScheduler
                     // 업데이트 존재
                     case 1:
                     case -1:
-                        if (MessageBox.Show("업데이트가 존재합니다. 신규버전을 설치하시겠습니까?", string.Empty, MessageBoxButtons.YesNo) != DialogResult.Yes)
+                        if (cMessageBox.Question("업데이트가 존재합니다. 신규버전을 설치하시겠습니까?", "알림", MessageBoxButtons.YesNo) != DialogResult.Yes)
                         {
                             if (File.Exists(updateFilePath))
                                 File.Delete(updateFilePath);
@@ -962,11 +962,11 @@ namespace TimeScheduler
                         File.Move(cConstraint.UPDATE_APPLICATION_LOCATION, cConstraint.UPDATE_APPLICATION_LOCATION + cConstraint.OLD_FILE_EXTENSION);
                         File.Move(updateFilePath, cConstraint.UPDATE_APPLICATION_LOCATION);
 
-                        MessageBox.Show("업데이트 적용을 위해 프로그램이 종료됩니다.");
+                        cMessageBox.Inform("업데이트 적용을 위해 프로그램이 종료됩니다.");
                         break;
 
                     default:
-                        MessageBox.Show("알 수 없는 코드입니다.");
+                        cMessageBox.Error("알 수 없는 코드입니다.");
                         return;
                 }
 

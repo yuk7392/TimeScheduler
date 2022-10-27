@@ -144,7 +144,7 @@ namespace TimeScheduler
                 {
                     if (newVal < 0)
                     {
-                        MessageBox.Show("0보다 작을 수 없습니다.");
+                        cMessageBox.Error("0보다 작을 수 없습니다.");
                         return;
                     }
 
@@ -152,7 +152,7 @@ namespace TimeScheduler
                     {
                         if (newVal > 23)
                         {
-                            MessageBox.Show("23시보다 클 수 없습니다.");
+                            cMessageBox.Error("23시보다 클 수 없습니다.");
                             return;
                         }
 
@@ -166,7 +166,7 @@ namespace TimeScheduler
                     {
                         if (newVal > 59)
                         {
-                            MessageBox.Show("59분보다 클 수 없습니다.");
+                            cMessageBox.Error("59분보다 클 수 없습니다.");
                             return;
                         }
                     }
@@ -176,7 +176,7 @@ namespace TimeScheduler
                 }
                 else
                 {
-                    MessageBox.Show("올바르지 않은 입력입니다.");
+                    cMessageBox.Error("올바르지 않은 입력입니다.");
                     return;
                 }
             }

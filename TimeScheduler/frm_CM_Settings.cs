@@ -25,7 +25,7 @@ namespace TimeScheduler
 
                 if (!Int32.TryParse(tbCycleTime.Text, out temp))
                 {
-                    MessageBox.Show("숫자만 입력 하실 수 있습니다.");
+                    cMessageBox.Error("숫자만 입력 하실 수 있습니다.");
                 }
                 else
                 {
@@ -63,7 +63,7 @@ namespace TimeScheduler
         {
             try
             {
-                if (MessageBox.Show("정말 초기화 하시겠습니까? 설정한 값은 모두 초기값으로 변경됩니다.", string.Empty, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
+                if (cMessageBox.Question("정말 초기화 하시겠습니까? 설정한 값은 모두 초기값으로 변경됩니다.", "알림", MessageBoxButtons.YesNo) != DialogResult.Yes)
                     return;
 
                 // remove all
@@ -71,7 +71,7 @@ namespace TimeScheduler
                 cSetting.SetDefaultValueIfNotExists();
                 LoadSetting();
 
-                MessageBox.Show("초기화 되었습니다.");
+                cMessageBox.Inform("초기화 되었습니다.");
             }
             catch (Exception ex)
             {
