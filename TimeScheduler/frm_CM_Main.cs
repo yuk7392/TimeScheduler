@@ -497,10 +497,7 @@ namespace TimeScheduler
                 dgvList.ClearSelection();
 
                 if (cSaveOnDataChange)
-                {
-                    cCommon.SaveData(dgvList);
-                    cMessageBox.Inform("저장되었습니다.");
-                }
+                    Save();
             }
             catch (Exception ex)
             {
@@ -518,8 +515,7 @@ namespace TimeScheduler
                     if (cMessageBox.Question("내용을 저장하시겠습니까?", "알림", MessageBoxButtons.OKCancel) != DialogResult.OK)
                         return;
 
-                    cCommon.SaveData(dgvList);
-                    cMessageBox.Inform("저장되었습니다.");
+                    Save();
                 }
             }
             catch (Exception ex)
@@ -551,10 +547,7 @@ namespace TimeScheduler
                     dgvList.ClearSelection();
 
                     if (cSaveOnDataChange)
-                    {
-                        cCommon.SaveData(dgvList);
-                        cMessageBox.Inform("저장되었습니다.");
-                    }
+                        Save();
                 }
                 else
                 {
@@ -617,10 +610,7 @@ namespace TimeScheduler
                 dgvList.ClearSelection();
 
                 if (cSaveOnDataChange)
-                {
-                    cCommon.SaveData(dgvList);
-                    cMessageBox.Inform("저장되었습니다.");
-                }
+                    Save();
             }
             catch (Exception ex)
             {
@@ -768,13 +758,12 @@ namespace TimeScheduler
                 if (cMessageBox.Question("완료항목들을 삭제하시겠습니까?" + Environment.NewLine + "(주기가 Every인 항목은 삭제되지 않습니다.)", "알림", MessageBoxButtons.OKCancel) != DialogResult.OK)
                     return;
 
-                cMessageBox.Inform(cCommon.RemoveCompletedRow(dgvList) + "개의 항목이 삭제되었습니다.");
+                int retVal = cCommon.RemoveCompletedRow(dgvList);
 
-                if (cSaveOnDataChange)
-                {
-                    cCommon.SaveData(dgvList);
-                    cMessageBox.Inform("저장되었습니다.");
-                }
+                cMessageBox.Inform(retVal + "개의 항목이 삭제되었습니다.");
+
+                if (cSaveOnDataChange && retVal > 0)
+                    Save();
             }
             catch (Exception ex)
             {
@@ -795,9 +784,7 @@ namespace TimeScheduler
                 if (cMessageBox.Question("모든항목들을 저장하시겠습니까?", "알림", MessageBoxButtons.OKCancel) != DialogResult.OK)
                     return;
 
-                cCommon.SaveData(dgvList);
-
-                cMessageBox.Inform("저장되었습니다.");
+                Save();
             }
             catch (Exception ex)
             {
@@ -985,6 +972,21 @@ namespace TimeScheduler
             {
                 frm_CM_ChangeLog frm = new frm_CM_ChangeLog();
                 frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                cLogWriter.WriteLog(ex);
+            }
+        }
+
+        private void Save(bool pShowDialog = true)
+        {
+            try
+            {
+                cCommon.SaveData(dgvList);
+
+                if (pShowDialog)
+                    cMessageBox.Inform("저장되었습니다.");
             }
             catch (Exception ex)
             {

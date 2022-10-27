@@ -118,17 +118,12 @@ namespace TimeScheduler
                     AppendLog(cChangeLogList.Count + "개의 변경사항을 불러왔습니다.");
 
                     cChangeLogList.Reverse();
-
                     lbVersion.Items.Clear();
 
                     foreach (eChangeLog l in cChangeLogList)
-                    {
                         lbVersion.Items.Add(l.VERSION);
 
-                        if (l.VERSION.Equals(cConstraint.APPLICATION_CURRENT_VERSION))
-                            lbVersion.SetSelected(lbVersion.Items.IndexOf(l.VERSION), true);
-                    }
-
+                    SetSelected(cConstraint.APPLICATION_CURRENT_VERSION);
                 }
             }
             catch (Exception ex)
@@ -188,11 +183,8 @@ namespace TimeScheduler
                 if (string.IsNullOrEmpty(verTemp))
                     return;
 
-                for (int i = 0; i < lbVersion.Items.Count; i++)
-                {
-                    if (lbVersion.Items[i].Equals(verTemp))
-                        lbVersion.SetSelected(i, true);
-                }
+                SetSelected(verTemp);
+
             }
             catch (Exception ex)
             {
@@ -209,6 +201,22 @@ namespace TimeScheduler
 
                 foreach (eChangeLog l in cChangeLogList)
                     lbVersion.Items.Add(l.VERSION);
+            }
+            catch (Exception ex)
+            {
+                cLogWriter.WriteLog(ex);
+            }
+        }
+
+        private void SetSelected(string pVersion)
+        {
+            try
+            {
+                for (int i = 0; i < lbVersion.Items.Count; i++)
+                {
+                    if (lbVersion.Items[i].Equals(pVersion))
+                        lbVersion.SetSelected(i, true);
+                }
             }
             catch (Exception ex)
             {
