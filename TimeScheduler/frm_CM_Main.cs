@@ -983,7 +983,8 @@ namespace TimeScheduler
         {
             try
             {
-
+                frm_CM_ChangeLog frm = new frm_CM_ChangeLog();
+                frm.ShowDialog();
             }
             catch (Exception ex)
             {
