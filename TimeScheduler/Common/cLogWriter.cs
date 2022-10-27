@@ -21,7 +21,7 @@ namespace TimeScheduler
             if (!dirInfo.Exists)
                 dirInfo.Create();
 
-            sb.Append("예외 발생 프로그램 : " + ex.Source + Environment.NewLine);
+            sb.Append("예외 발생 프로그램/개체 : " + ex.Source + Environment.NewLine);
             sb.Append("발생한 예외 : " + ex.Message + Environment.NewLine);
             sb.Append("예외가 발생한 메서드 : " + ex.TargetSite + Environment.NewLine);
 
