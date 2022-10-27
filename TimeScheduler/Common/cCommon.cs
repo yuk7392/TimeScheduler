@@ -618,8 +618,11 @@ namespace TimeScheduler
                 const string NCSI_DNS = "dns.msftncsi.com";
                 const string NCSI_DNS_IP_ADDRESS = "131.107.255.255";
 
+                cCommon.SetSecurityProtocol();
+
                 // Check NCSI test link
                 WebClient webClient = new WebClient();
+
                 string result = webClient.DownloadString(NCSI_TEST_URL);
 
                 if (result != NCSI_TEST_RESULT)

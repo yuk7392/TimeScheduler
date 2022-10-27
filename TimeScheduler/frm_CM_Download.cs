@@ -33,6 +33,8 @@ namespace TimeScheduler
         {
             try
             {
+                cCommon.SetSecurityProtocol();
+
                 int skipCnt = 0;
                 WebClient webClient = new WebClient();
 

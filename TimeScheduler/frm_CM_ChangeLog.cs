@@ -59,6 +59,7 @@ namespace TimeScheduler
                 cCommon.SetSecurityProtocol();
 
                 WebClient webClient = new WebClient();
+                webClient.Encoding = Encoding.UTF8;
 
                 string logStr = Regex.Replace(webClient.DownloadString(new Uri(cConstraint.CHANGELOG_SERVER_URL)), @"\r\n?|\n", Environment.NewLine);
 
