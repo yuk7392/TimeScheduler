@@ -32,6 +32,7 @@ namespace TimeScheduler
         public string TIME { get; set; }
         public string MINUTE { get; set; }
         public bool COMPLETED { get; set; }
+        public bool SKIP { get; set; }
 
         public eSchedule()
         {
@@ -45,7 +46,7 @@ namespace TimeScheduler
             }
         }
 
-        public eSchedule(string pName, ScheduleCycleType pCycle, string pDate, List<DayOfWeek> pDayOfWeek, string pTime, string pMinute, bool pCompleted = false)
+        public eSchedule(string pName, ScheduleCycleType pCycle, string pDate, List<DayOfWeek> pDayOfWeek, string pTime, string pMinute, bool pCompleted = false, bool pSkip = false)
         {
             try
             {
@@ -56,6 +57,7 @@ namespace TimeScheduler
                 TIME = pTime;
                 MINUTE = pMinute;
                 COMPLETED = pCompleted;
+                SKIP = pSkip;
             }
             catch (Exception ex)
             {
@@ -70,7 +72,7 @@ namespace TimeScheduler
                 NAME = TIME = MINUTE = DATE = string.Empty;
                 CYCLE = ScheduleCycleType.None;
                 DAYOFWEEK.Clear();
-                COMPLETED = false;
+                COMPLETED = SKIP = false;
             }
             catch (Exception ex)
             {

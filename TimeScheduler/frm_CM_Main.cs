@@ -105,6 +105,8 @@ namespace TimeScheduler
                     string min = DateTime.Now.ToString("mm");
                     DayOfWeek dayOfWeek = cCommon.GetDayOfWeekOfDate(date);
 
+                    if (s.SKIP)
+                        continue;
 
                     switch (s.CYCLE)
                     {
@@ -224,6 +226,7 @@ namespace TimeScheduler
                 cInformControls.Add(lblSchedule_Time);
                 cInformControls.Add(lblSchedule_Minute);
                 cInformControls.Add(cbSchedule_Completed);
+                cInformControls.Add(cbSchedule_Skip);
                 //
 
                 // Run Config
@@ -294,6 +297,7 @@ namespace TimeScheduler
                 lblSchedule_Minute.Text = selSchedule.MINUTE;
 
                 cbSchedule_Completed.Checked = selSchedule.COMPLETED;
+                cbSchedule_Skip.Checked = selSchedule.SKIP;
             }
             catch (Exception ex)
             {
@@ -312,6 +316,7 @@ namespace TimeScheduler
                 pRow.Cells["ScheduleTime"].Value = lblSchedule_Time.Text;
                 pRow.Cells["ScheduleMinute"].Value = lblSchedule_Minute.Text;
                 pRow.Cells["ScheduleCompleted"].Value = cbSchedule_Completed.Checked;
+                pRow.Cells["ScheduleSkip"].Value = cbSchedule_Skip.Checked;
             }
             catch (Exception ex)
             {
@@ -541,7 +546,7 @@ namespace TimeScheduler
                 {
 
                     dgvList.Rows.Add(tbScheduleName.Text, rbSchedule_Once.Checked ? "Once" : "Every", tbScheduleDate.Text, cCommon.CheckBoxToDayOfWeek(cbSchedule_Sun, cbSchedule_Mon, cbSchedule_Tue, cbSchedule_Wed, cbSchedule_Thu, cbSchedule_Fri, cbSchedule_Sat),
-                                     lblSchedule_Time.Text, lblSchedule_Minute.Text, cbSchedule_Completed.Checked);
+                                     lblSchedule_Time.Text, lblSchedule_Minute.Text, cbSchedule_Completed.Checked, cbSchedule_Skip.Checked);
 
                     ClearInformControls();
                     dgvList.ClearSelection();

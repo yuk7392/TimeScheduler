@@ -120,8 +120,8 @@ namespace TimeScheduler
                     sb.Append(ConvertDayOfWeekToInt(row.Cells["ScheduleDayOfWeek"].Value.ToString()).NtoE() + ",");
                     sb.Append(row.Cells["ScheduleTime"].Value.ToString().NtoE() + ",");
                     sb.Append(row.Cells["ScheduleMinute"].Value.ToString().NtoE() + ",");
-                    sb.Append(row.Cells["ScheduleCompleted"].Value.ToString().NtoE() + Environment.NewLine);
-
+                    sb.Append(row.Cells["ScheduleCompleted"].Value.ToString().NtoE() + ",");
+                    sb.Append(row.Cells["ScheduleSkip"].Value.ToString().NtoE() + Environment.NewLine);
                 }
 
                 File.WriteAllText(cConstraint.CSV_ABSOLUTE_LOCATION, sb.ToString());
@@ -153,10 +153,17 @@ namespace TimeScheduler
                 {
                     string[] rowData = s.Split(new string[] { "," }, StringSplitOptions.None);
 
-                    if (rowData.Length != 7)
+                    if (rowData.Length < 7)
                         continue;
 
-                    pDataGridView.Rows.Add(rowData[0], rowData[1], rowData[2], ConvertIntToDayOfWeek(rowData[3].ToString().NtoE()), rowData[4], rowData[5], rowData[6].ToString().NtoE().ToUpper().Equals("TRUE") ? true : false);
+                    // 신규 Column 추가에 따라 기존데이터 업데이트를 위함
+                    if (rowData.Length == 7)
+                    {
+                        Array.Resize(ref rowData, 8);
+                        rowData[7] = "False";
+                    }
+
+                    pDataGridView.Rows.Add(rowData[0], rowData[1], rowData[2], ConvertIntToDayOfWeek(rowData[3].ToString().NtoE()), rowData[4], rowData[5], rowData[6].ToString().NtoE().ToUpper().Equals("TRUE") ? true : false, rowData[7].ToString().NtoE().ToUpper().Equals("TRUE") ? true : false);
                 }
             }
             catch (Exception ex)
@@ -208,6 +215,7 @@ namespace TimeScheduler
                 eSchedule.TIME = pRow.Cells["ScheduleTime"].Value.ToString().NtoE();
                 eSchedule.MINUTE = pRow.Cells["ScheduleMinute"].Value.ToString().NtoE();
                 eSchedule.COMPLETED = pRow.Cells["ScheduleCompleted"].Value.ToString().NtoE().ToUpper().Equals("TRUE") ? true : false;
+                eSchedule.SKIP = pRow.Cells["ScheduleSkip"].Value.ToString().NtoE().ToUpper().Equals("TRUE") ? true : false;
 
                 return eSchedule;
             }
