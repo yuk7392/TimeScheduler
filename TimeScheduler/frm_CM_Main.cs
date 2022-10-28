@@ -954,7 +954,7 @@ namespace TimeScheduler
                         File.Move(cConstraint.UPDATE_APPLICATION_LOCATION, cConstraint.UPDATE_APPLICATION_LOCATION + cConstraint.OLD_FILE_EXTENSION);
                         File.Move(updateFilePath, cConstraint.UPDATE_APPLICATION_LOCATION);
 
-                        cMessageBox.Inform("업데이트 적용을 위해 프로그램이 종료됩니다.");
+                        cMessageBox.Inform("업데이트 적용을 위해 프로그램이 재시작 됩니다.");
                         break;
 
                     default:
