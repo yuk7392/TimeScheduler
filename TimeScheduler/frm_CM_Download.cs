@@ -87,7 +87,7 @@ namespace TimeScheduler
             try
             {
                 cWorker_SubEvent(false);
-                this.BeginInvoke(new MethodInvoker(delegate { this.Close(); }));
+                this.BeginInvoke(new MethodInvoker(delegate { this.DialogResult = DialogResult.OK; this.Close(); }));
             }
             catch (Exception ex)
             {
@@ -151,9 +151,14 @@ namespace TimeScheduler
                 cWorker_SubEvent(true);
 
                 if (cDownloadList.Count == 0)
+                {
+                    this.DialogResult = DialogResult.Cancel;
                     this.Close();
+                }
                 else
+                {
                     cWorker.RunWorkerAsync();
+                }
             }
             catch (Exception ex)
             {
