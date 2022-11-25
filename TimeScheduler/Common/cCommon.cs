@@ -720,6 +720,26 @@ namespace TimeScheduler
             }
         }
         #endregion
+
+        #region IsFileLocked : 파일이 사용가능한지 여부를 반환한다.
+        public static bool IsFileLocked(string pFilePath)
+        {
+            try
+            {
+                using (FileStream fs = new FileInfo(pFilePath).Open(FileMode.Open, FileAccess.Read, FileShare.None))
+                {
+                    fs.Close();
+                }
+            }
+            catch (IOException)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        #endregion
     }
 
     public static class cCommonExtension

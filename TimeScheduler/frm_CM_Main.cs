@@ -932,8 +932,8 @@ namespace TimeScheduler
                 frm_CM_Download frm = new frm_CM_Download(fileList);
                 frm.ShowDialog();
 
-                if (frm.DialogResult != DialogResult.OK && frm.DialogResult != DialogResult.Cancel)
-                    return;
+                while (cCommon.IsFileLocked(updateFilePath))
+                    Application.DoEvents();
 
                 switch (cCommon.CompareVersion(cConstraint.APPLICATION_CURRENT_VERSION, cCommon.GetFileAssemblyVersion(updateFilePath)))
                 {
