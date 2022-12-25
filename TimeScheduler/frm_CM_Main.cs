@@ -494,10 +494,13 @@ namespace TimeScheduler
                 if (!Validation())
                     return;
 
-                if (cWorker.IsBusy)
+                if (cWorker != null)
                 {
-                    cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
-                    return;
+                    if (cWorker.IsBusy)
+                    {
+                        cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
+                        return;
+                    }
                 }
 
                 UpdateRowInfo(dgvList.SelectedRows[0]);
@@ -539,10 +542,13 @@ namespace TimeScheduler
                 if (!Validation())
                     return;
 
-                if (cWorker.IsBusy)
+                if (cWorker != null)
                 {
-                    cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
-                    return;
+                    if (cWorker.IsBusy)
+                    {
+                        cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
+                        return;
+                    }
                 }
 
                 if (!cCommon.IsDupName(dgvList, tbScheduleName.Text))
@@ -607,11 +613,15 @@ namespace TimeScheduler
                 if (dgvList.SelectedRows.Count == 0)
                     return;
 
-                if (cWorker.IsBusy)
+                if (cWorker != null)
                 {
-                    cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
-                    return;
+                    if (cWorker.IsBusy)
+                    {
+                        cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
+                        return;
+                    }
                 }
+
 
                 dgvList.Rows.Remove(dgvList.SelectedRows[0]);
                 ClearInformControls();
@@ -764,10 +774,13 @@ namespace TimeScheduler
         {
             try
             {
-                if (cWorker.IsBusy)
+                if (cWorker != null)
                 {
-                    cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
-                    return;
+                    if (cWorker.IsBusy)
+                    {
+                        cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
+                        return;
+                    }
                 }
 
                 if (cMessageBox.Question("완료항목들을 삭제하시겠습니까?" + Environment.NewLine + "(주기가 Every인 항목은 삭제되지 않습니다.)", "알림", MessageBoxButtons.OKCancel) != DialogResult.OK)
@@ -790,10 +803,13 @@ namespace TimeScheduler
         {
             try
             {
-                if (cWorker.IsBusy)
+                if (cWorker != null)
                 {
-                    cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
-                    return;
+                    if (cWorker.IsBusy)
+                    {
+                        cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
+                        return;
+                    }
                 }
 
                 if (cMessageBox.Question("모든항목들을 저장하시겠습니까?", "알림", MessageBoxButtons.OKCancel) != DialogResult.OK)
@@ -811,10 +827,13 @@ namespace TimeScheduler
         {
             try
             {
-                if (cWorker.IsBusy)
+                if (cWorker != null)
                 {
-                    cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
-                    return;
+                    if (cWorker.IsBusy)
+                    {
+                        cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
+                        return;
+                    }
                 }
 
                 if (cMessageBox.Question("모든항목들을 불러오시겠습니까?" + Environment.NewLine + "(저장하지 않은 항목은 모두 삭제됩니다.)", "알림", MessageBoxButtons.OKCancel) != DialogResult.OK)
@@ -835,10 +854,13 @@ namespace TimeScheduler
         {
             try
             {
-                if (cWorker.IsBusy)
+                if (cWorker != null)
                 {
-                    cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
-                    return;
+                    if (cWorker.IsBusy)
+                    {
+                        cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
+                        return;
+                    }
                 }
 
                 if (cMessageBox.Question("모든항목들을 삭제하시겠습니까?" + Environment.NewLine + "(화면에 표시된 데이터 또한 삭제됩니다.)", "알림", MessageBoxButtons.OKCancel) != DialogResult.OK)
@@ -895,10 +917,13 @@ namespace TimeScheduler
         {
             try
             {
-                if (cWorker.IsBusy)
+                if (cWorker != null)
                 {
-                    cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
-                    return;
+                    if (cWorker.IsBusy)
+                    {
+                        cMessageBox.Warn("실행중에는 해당기능을 사용하실 수 없습니다.");
+                        return;
+                    }
                 }
 
                 frm_CM_Settings frm = new frm_CM_Settings();
