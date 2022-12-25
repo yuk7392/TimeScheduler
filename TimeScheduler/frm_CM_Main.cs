@@ -649,9 +649,13 @@ namespace TimeScheduler
                     btnToggleDaemon.Text = "중지";
                     lblStatus.Text = "실행 중";
 
-                    cWorker.DoWork += cWorker_DoWork;
-                    cWorker.ProgressChanged += cWorker_ProgressChanged;
-                    cWorker.RunWorkerCompleted += cWorker_RunWorkerCompleted;
+                    //cWorker.DoWork += cWorker_DoWork;
+                    //cWorker.ProgressChanged += cWorker_ProgressChanged;
+                    //cWorker.RunWorkerCompleted += cWorker_RunWorkerCompleted;
+
+                    cWorker = new BackgroundWorker();
+                    cWorker.WorkerSupportsCancellation = true;
+                    SetcWorkerEvent(true);
 
                     cWorker.RunWorkerAsync();
 
@@ -674,12 +678,15 @@ namespace TimeScheduler
                         btnToggleDaemon.Enabled = false;
                     }
 
-                    cWorker.DoWork -= cWorker_DoWork;
-                    cWorker.ProgressChanged -= cWorker_ProgressChanged;
-                    cWorker.RunWorkerCompleted -= cWorker_RunWorkerCompleted;
+                    //cWorker.DoWork -= cWorker_DoWork;
+                    //cWorker.ProgressChanged -= cWorker_ProgressChanged;
+                    //cWorker.RunWorkerCompleted -= cWorker_RunWorkerCompleted;
 
-                    while (cWorker.IsBusy)
-                        Application.DoEvents();
+                    //while (cWorker.IsBusy)
+                    //    Application.DoEvents();
+
+                    SetcWorkerEvent(false);
+                    cWorker = null;
 
                     btnToggleDaemon.Enabled = true;
                     tbWaitLatency.ReadOnly = false;
@@ -995,6 +1002,29 @@ namespace TimeScheduler
 
                 if (pShowDialog)
                     cMessageBox.Inform("저장되었습니다.");
+            }
+            catch (Exception ex)
+            {
+                cLogWriter.WriteLog(ex);
+            }
+        }
+
+        private void SetcWorkerEvent(bool pSubFlag)
+        {
+            try
+            {
+                if (pSubFlag)
+                {
+                    cWorker.DoWork += cWorker_DoWork;
+                    cWorker.ProgressChanged += cWorker_ProgressChanged;
+                    cWorker.RunWorkerCompleted += cWorker_RunWorkerCompleted;
+                }
+                else
+                {
+                    cWorker.DoWork -= cWorker_DoWork;
+                    cWorker.ProgressChanged -= cWorker_ProgressChanged;
+                    cWorker.RunWorkerCompleted -= cWorker_RunWorkerCompleted;
+                }
             }
             catch (Exception ex)
             {
