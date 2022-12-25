@@ -89,8 +89,11 @@ namespace TimeScheduler
 
                 List<eSchedule> schedules = new List<eSchedule>();
 
-                lblWorkDate.BeginInvoke(new MethodInvoker(delegate { lblWorkDate.Text = DateTime.Now.ToString(); }));
-                lblRecogCnt.BeginInvoke(new MethodInvoker(delegate { lblRecogCnt.Text = schedules.Count.ToString(); }));
+                if (cWorker != null)
+                {
+                    lblWorkDate.BeginInvoke(new MethodInvoker(delegate { lblWorkDate.Text = DateTime.Now.ToString(); }));
+                    lblRecogCnt.BeginInvoke(new MethodInvoker(delegate { lblRecogCnt.Text = schedules.Count.ToString(); }));
+                }
 
                 foreach (DataGridViewRow row in dgvList.Rows)
                 {
