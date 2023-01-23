@@ -112,6 +112,11 @@ namespace TimeScheduler
 
                 StringBuilder sb = new StringBuilder();
 
+                // 2023.01.23 저장파일에 주석 추가
+
+                sb.Append("# TimeScheduler Version : " + Assembly.GetExecutingAssembly().GetName().Version + Environment.NewLine);
+                sb.Append("# Last Modified : " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + Environment.NewLine);
+
                 foreach (DataGridViewRow row in pDataGridView.Rows)
                 {
                     sb.Append(row.Cells["ScheduleName"].Value.ToString().NtoE() + ",");
@@ -151,6 +156,10 @@ namespace TimeScheduler
 
                 foreach (string s in dataLines)
                 {
+                    // 2023.01.23 주석(#)표시는 continue 하도록 수정
+
+                    if (s.StartsWith("#")) continue;
+
                     string[] rowData = s.Split(new string[] { "," }, StringSplitOptions.None);
 
                     if (rowData.Length < 7)
